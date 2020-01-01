@@ -1,0 +1,47 @@
+Description du projet:
+
+
+Nous allons essayer de créer un projet en c++ sur le thème SMOKE. 
+La ligne de base sera une sorte d'escape game, un jeu graphique utilisant QT et sa bibliothèque de graphismes.
+Il pourra suivre les principes des jeux d'escape game consultables sur les liens suivants:
+http://www.cubeescape.com/ , http://www.topito.com/top-meilleurs-escape-games-ligne
+
+Voici un lien vers des exemples de jeux développés avec QT : https://wiki.qt.io/Main
+
+Le projet est porté par deux collaboratrices qui auront les rôles suivants: * à remplir *
+Ils doit respecter certaines règles imposées, précisées dans un pdf sur moodle.
+
+Rappel : 
+8 classes à définir,
+au moins 3 niveaux de hiérarchie,
+2 fonctions virtuelles ( à définir dans des clases mères),
+2 surcharges d'opérateurs ( je propose de redéfinir les flux de sortie ppour l'afichage graphique, à voir)
+2 conteneurs différents de la STL ( donc créer des listes etc je crois),
+commenter le code,
+aucune erreur sur Valgrind, 
+Makefile, diagramme ML, 
+description de l'appli, 
+préciser les parties de l'implémentation dont on est le plus fières
+
+
+Le d"but de diagramme UML va être poussé sur le git et peut être évolutif. Sa construction suit la description suivante de l'application : 
+
+Le jeu se déroulera dans une à plusieurs pièces contenant des objets. Il aura une explication du jeu par l'intermédiaire de boites de dialogues.
+C'est aussi via ces boites de dialogues qu'il pourra mettre le jeu en pause, ou demander un indice.
+
+Le joueur devra dans un temps limité, résoudre des énigmes et codes afin de s'échapper desdites pièces. 
+La fumée peut intervenir à plusieurs niveaux ( je pensais notammment à un train à vapeur, une personne fumant une cigarette, de la fumée s'échappant d'une maquette de fusée, des fumées colorées ...) 
+Ca s'integrerait bien dans un univers enfantin, une petite chambre d'enfant, et on peut faire de la prevention du coup
+
+On peut eventuellement voir en fonction de la difficulté d'implémentation graphique si on peut mettre un personnage à faire bouger ou si le joueur ne manipule que la souris pour interagir avec son environnement.
+Il pourra être amené à devoir appuyer sur des touches de son clavier ou alors on peut rester sur un simple click n point. 
+
+Le joueur dispose d'un sac à dos, et peut y stocker des objets, qu'il pourra utiliser pour résoudre des énigmes. La contenance de ce sac sera définie par la suite.
+Si le joueur se retrouve bloqué et souhaite demander un indice, il peut le faire, au prix d'une réduction de temps.
+Il faut donc lier un indice à chaque code ou enigme à resoudre. On peut créer deux classes, codes et enigmes d'ailleurs
+Pour chaque code/enigme, il faut semer dans la pièce des elements de résolution. Ces elements peuvent apparaitre une fois un code resolu pour resoudre un nouveau code. 
+Je pensais les faire seulement sous forme d'objet (genre clé pour ouvrir un cadenas oiu petite feuille avec un code ou une indicaztion) mais on peut developper
+
+Le joueur gagne s'il arrive à sortir avant que le timer ne se termine.
+
+
