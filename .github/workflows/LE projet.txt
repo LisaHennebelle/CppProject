@@ -7,9 +7,10 @@ Il pourra suivre les principes des jeux d'escape game consultables sur les liens
 http://www.cubeescape.com/ , http://www.topito.com/top-meilleurs-escape-games-ligne
 
 Voici un lien vers des exemples de jeux développés avec QT : https://wiki.qt.io/Main
+tuto youtube: youtube.com/watch?v=050zzD4c-5c
 
-Le projet est porté par deux collaboratrices qui auront les rôles suivants: * à remplir *
-Ils doit respecter certaines règles imposées, précisées dans un pdf sur moodle.
+Le projet est porté par Lisa et Meriem qui auront les rôles suivants: * à remplir *
+Il doit respecter certaines règles imposées, précisées dans un pdf sur moodle.
 
 Rappel : 
 8 classes à définir,
