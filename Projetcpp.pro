@@ -26,10 +26,12 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-    MyRect.cpp
+    MyRect.cpp \
+    sac.cpp
 
 HEADERS += \
-    MyRect.h
+    MyRect.h \
+    sac.h
 
 FORMS += \
         mainwindow.ui
