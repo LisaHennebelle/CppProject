@@ -1,20 +1,21 @@
 #ifndef SAC_H
 #define SAC_H
-//#include <list>
+
 #include <QList>
-#include "MyRect.h"
+#include <QObject>
+#include "Objet.h"
 #include <QGraphicsRectItem>
 
 
 
-class Sac: public QGraphicsRectItem
+class Sac: public QGraphicsRectItem,public QObject
 {    
-    QList <MyRect> items;
+    QList <Objet> items;
     int nb_items;
 public:
     Sac();
-    void addObject(MyRect r);
-    void rmObject(MyRect r);
+    void addObject(Objet r);
+    void rmObject(const Objet &r);
 };
 
 #endif // SAC_H

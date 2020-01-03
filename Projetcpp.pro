@@ -25,12 +25,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+    Objet.cpp \
         main.cpp \
-    MyRect.cpp \
     sac.cpp
 
 HEADERS += \
-    MyRect.h \
+    Objet.h \
     sac.h
 
 FORMS += \

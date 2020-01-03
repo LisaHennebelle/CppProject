@@ -1,7 +1,7 @@
 
 #include <QApplication>
 #include <QGraphicsScene>
-#include "MyRect.h"
+#include "Objet.h"
 #include "sac.h"
 #include <QGraphicsView>
 
@@ -11,14 +11,14 @@ int main(int argc, char *argv[])
 
     QGraphicsScene * scene= new QGraphicsScene();
 
-    MyRect * rect = new MyRect();
-    MyRect * rect2 = new MyRect();
+    Objet * rect = new Objet();
+    Objet * rect2 = new Objet();
 
 
     Sac * sac = new Sac();
     rect->setRect(0,0,100,100);
-    rect->setRect(-10,-10,100,100);
-    sac->setRect(10,10,800,800);
+    rect->setRect(0,0,100,100);
+
     //sac->addObject(*rect);
 
     scene->addItem(rect);

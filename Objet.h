@@ -1,12 +1,12 @@
-#ifndef MYRECT_H
-#define MYRECT_H
+#ifndef OBJET_H
+#define OBJET_H
 #include <QGraphicsRectItem>
 
-class MyRect:public QGraphicsRectItem{
+class Objet:public QGraphicsRectItem{
 public:
     void keyPressEvent(QKeyEvent * event);
    // void tilePressEvent(QKeyEvent *event, int i = 0);
-   ~MyRect();
+   ~Objet();
 };
 
-#endif // MYRECT_H
+#endif // OBJET_H
