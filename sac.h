@@ -1,6 +1,7 @@
 #ifndef SAC_H
 #define SAC_H
 //#include <list>
+#include <QList>
 #include "MyRect.h"
 #include <QGraphicsRectItem>
 
@@ -8,7 +9,7 @@
 
 class Sac: public QGraphicsRectItem
 {    
-    std::list <MyRect> items;
+    QList <MyRect> items;
     int nb_items;
 public:
     Sac();

@@ -1,4 +1,5 @@
 #include "MyRect.h"
+#include <QGraphicsRectItem>
 #include<QDebug>
 #include<QKeyEvent>
 void MyRect::keyPressEvent(QKeyEvent *event)
@@ -9,8 +10,12 @@ void MyRect::keyPressEvent(QKeyEvent *event)
     }
 }
 
+/*MyRect::~MyRect()
+{
+    ~QGraphicsRectItem(); //il ne le reconnait pas
+}*/
 
-// test de code
+// test de code numerique
 /*void MyRect::tilePressEvent(QKeyEvent *event, int i)
     {
     qDebug()<< "code saisi";

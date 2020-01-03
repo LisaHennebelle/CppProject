@@ -1,5 +1,5 @@
 #include "sac.h"
-#include <list>
+#include <QList>
 #include <iterator>
 #include<QDebug>
 #include <QGraphicsRectItem>
@@ -10,6 +10,7 @@
 Sac::Sac()
 {
     nb_items = 0;
+    items = QList<MyRect>();
 }
 
 void Sac::addObject(MyRect r)
@@ -20,9 +21,18 @@ void Sac::addObject(MyRect r)
         qDebug() << "Trop d'objets, on ne peut pas en ajouter d'autres";
         return;
     }
-    std::list <MyRect>::iterator ite;
+    //std::list <MyRect>::iterator ite;
     items.push_back(r);
     r.setPos(x()-100,y());
+}
+
+void Sac::rmObject(MyRect r)
+{
+   if (items.contains(r))
+   {
+       items.removeAt(items.indexOf(r));
+       nb_items --;
+   }
 }
 
 
