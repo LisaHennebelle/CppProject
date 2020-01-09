@@ -17,7 +17,8 @@ int main(int argc, char *argv[])
 
     Sac * sac = new Sac();
     rect->setRect(0,0,100,100);
-    rect->setRect(0,0,100,100);
+    rect2->setRect(0,0,100,100);
+    rect2->setPos(rect2->x()+30, rect2->y()+30);
 
     //sac->addObject(*rect);
 
