@@ -27,11 +27,13 @@ CONFIG += c++11
 SOURCES += \
     Objet.cpp \
         main.cpp \
-    sac.cpp
+    sac.cpp \
+    code.cpp
 
 HEADERS += \
     Objet.h \
-    sac.h
+    sac.h \
+    code.h
 
 FORMS += \
         mainwindow.ui

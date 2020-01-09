@@ -3,6 +3,7 @@
 #include <QGraphicsScene>
 #include "Objet.h"
 #include "sac.h"
+#include "code.h"
 #include <QGraphicsView>
 
 int main(int argc, char *argv[])
@@ -12,13 +13,17 @@ int main(int argc, char *argv[])
     QGraphicsScene * scene= new QGraphicsScene();
 
     Objet * rect = new Objet();
+    rect->setName("clé");
     Objet * rect2 = new Objet();
-
-
+    Code * cadenas = new Code("Cadenas");
+    cadenas->associerObj(*rect);
     Sac * sac = new Sac();
+
     rect->setRect(0,0,100,100);
     rect2->setRect(0,0,100,100);
-    rect2->setPos(rect2->x()+30, rect2->y()+30);
+    rect2->setPos(rect2->x()-200, rect2->y()-300);
+    cadenas->setRect(0,0,50,50);
+    cadenas->setPos(cadenas->x()-350, cadenas->y()-350);
 
     //sac->addObject(*rect);
 

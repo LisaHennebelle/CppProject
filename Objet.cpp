@@ -11,14 +11,19 @@ Objet::Objet()
     name = "unnamed";
 }
 
-Objet::Objet(std::string mot)
+Objet::Objet(std::string nom)
 {
-    name = mot;
+    name = nom;
 }
 
 Objet::Objet(const Objet &o)
 {
     name = o.name;
+}
+
+void Objet::setName(std::string nom)
+{
+    name = nom;
 }
 
 int Objet::MouseEvent(QMouseEvent *event)
