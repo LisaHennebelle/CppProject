@@ -31,6 +31,11 @@ void indice::setText(std::string message)
     text = message;
 }
 
+void indice::addObjet(Objet o)
+{
+    relObj = o;
+}
+
 void indice::show()
 {
     //this->setText("The document has been modified.");

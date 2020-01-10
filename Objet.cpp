@@ -15,11 +15,10 @@ Objet::Objet(std::string nom)
 {
     name = nom;
 }
-Objet::Objet(const Objet &o):QGraphicsRectItem(o)
-
+Objet::Objet(const Objet &o)//:QGraphicsRectItem(o)
 {
-
-     name = o.name;
+    this->setRect(o.rect());
+    this->name = o.name;
 }
 
 

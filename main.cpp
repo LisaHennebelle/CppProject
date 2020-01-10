@@ -5,7 +5,10 @@
 #include "sac.h"
 #include "code.h"
 #include <QGraphicsView>
-#include <QtTest/QtTest>
+#include <unistd.h>
+
+
+/*#include <QtTest/QtTest>
 #include <QtTest/QTestKeyClicksEvent>
 #include <QtTest/QtTestDepends>
 #include <QtTest/qtest.h>
@@ -23,7 +26,7 @@ void QTest::qSleep(int ms)
     struct timespec ts = { ms / 1000, (ms % 1000) * 1000 * 1000 };
     nanosleep(&ts, NULL);
 #endif
-}
+}*/
 
 int main(int argc, char *argv[])
 {
@@ -71,7 +74,9 @@ int main(int argc, char *argv[])
     QGraphicsView * view = new QGraphicsView(scene);
     view->show();
 
-    QTest::qSleep(100);
+
+     usleep(5);
+    // QTest::qSleep(100);
     indice_cadenas->show();
 
 
