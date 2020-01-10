@@ -5,7 +5,7 @@
 #include <QMouseEvent>
 #include<QGraphicsScene>
 
-
+// constructeurs
 Objet::Objet()
 {
     name = "unnamed";
@@ -21,11 +21,19 @@ Objet::Objet(const Objet &o)
     name = o.name;
 }
 
+
+// getter et setter
 void Objet::setName(std::string nom)
 {
     name = nom;
 }
 
+std::string Objet::getName()
+{
+    return name;
+}
+
+// comportement
 int Objet::MouseEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton)

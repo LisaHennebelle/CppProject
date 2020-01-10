@@ -5,27 +5,27 @@
 Code::Code()
 {
     locked = 1;
-    name = "unnamed";
+    this->setName("unnamed");
     //assObj = new Objet();
 }
 
 Code::Code(std::string nom)
 {
     locked = 1;
-    name = nom;
+    this->setName(nom);
 }
 
 Code::Code(std::string nom ,Objet o)
 {
   locked = 1;
-  name = nom;
+  this->setName(nom);
   assObj = o; //pb lies au copy constructor
 }
 
 // set attributs
 void Code::associerNom(std::string nom)
 {
-    name = nom;
+    this->setName(nom);
 }
 
 void Code::associerObj(Objet o)

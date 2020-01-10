@@ -4,14 +4,15 @@
 #include <QMouseEvent>
 
 class Objet:public QGraphicsRectItem{
-public:
     std::string name;
+public:
+    // constructeurs
     Objet();
     Objet(std::string nom);
     Objet(const Objet &o);
 
     void setName(std::string nom);
-
+    std::string getName();
     int MouseEvent(QMouseEvent *event); // retourne 1 si l'utilisateur a cliqué sur l'objet
     void keyPressEvent(QKeyEvent * event);
    // void tilePressEvent(QKeyEvent *event, int i = 0);
