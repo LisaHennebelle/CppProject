@@ -1,4 +1,5 @@
 #include "code.h"
+#include "indice.h"
 #include<QDebug>
 
 
@@ -7,6 +8,7 @@ Code::Code()
     locked = 1;
     this->setName("unnamed");
     assObj.setName("unnamed");
+
 }
 
 Code::Code(std::string nom)
@@ -21,7 +23,7 @@ Code::Code(std::string nom ,Objet o)
   locked = 1;
   this->setName(nom);
   assObj = o; //pb lies au copy constructor
-  i = new indice(o, "not set");
+  i.addObjet(o);
 
 }
 
@@ -37,7 +39,14 @@ void Code::associerObj(Objet o)
     i.addObjet(o);
 }
 
+
+void Code::associerIndice(indice i)
+{
+    i = i;
+}
+
 // unlocker le code avec un objet
+// a utiliser si l'utilisateur selectionne un objet puis le code
 void Code::unlockWith(Objet o)
 {
     if (assObj == o) // si l'objet selectionne etait bien celui associé au code
@@ -49,4 +58,10 @@ void Code::unlockWith(Objet o)
     }
     qDebug() << "Try again!"; // si l'objet selectionné n'était pas le bon
 
+}
+
+void Code::showIndice()
+{
+    i.show();
+    // decrementer le timer du jeu?
 }

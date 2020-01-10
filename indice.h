@@ -19,6 +19,8 @@ public:
     void setText(std::string message);
     void addObjet(Objet o);// permet de savoir sur quel Objet porte l'indice pour pouvoir l'afficher
     void show();
+
+    const indice operator =(const indice& i) const { return i; }
 };
 
 #endif // INDICE_H
