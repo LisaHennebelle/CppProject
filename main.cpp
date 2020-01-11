@@ -9,39 +9,19 @@
 #include<string>
 
 
-/*#include <QtTest/QtTest>
-#include <QtTest/QTestKeyClicksEvent>
-#include <QtTest/QtTestDepends>
-#include <QtTest/qtest.h>
-
-#ifdef Q_OS_WIN
-#include <windows.h> // for Sleep
-#endif
-void QTest::qSleep(int ms)
-{
-    QTEST_ASSERT(ms > 0);
-
-#ifdef Q_OS_WIN
-    Sleep(uint(ms));
-#else
-    struct timespec ts = { ms / 1000, (ms % 1000) * 1000 * 1000 };
-    nanosleep(&ts, NULL);
-#endif
-}*/
-
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
     QGraphicsScene * scene= new QGraphicsScene();
+    Sac * sac = new Sac();
     Objet * rect = new Objet("clé");
     //rect->setName("clé");
     Objet * rect2 = new Objet();
     Code * cadenas = new Code("cadenas");
     cadenas->associerObj(rect);
-    Sac * sac = new Sac();
 
-    if (rect -> MouseEvent(event) == 1);
+
     sac -> addObject(*rect);
     indice *indice_cadenas = new indice("trouvez la clé");
     cadenas->associerIndice(indice_cadenas);
@@ -77,9 +57,12 @@ int main(int argc, char *argv[])
     QGraphicsView * view = new QGraphicsView(scene);
     view ->resize(1500, 1000);
     view->show();
-
-
-     usleep(5);
+    if (rect2->getFlag()==1)
+    {
+        sac->addObject(*rect2);
+    }
+    view->show();
+     usleep(15);
     // QTest::qSleep(100);
     indice_cadenas->show();
 

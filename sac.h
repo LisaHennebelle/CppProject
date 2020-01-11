@@ -1,15 +1,13 @@
-#ifndef SAC_H
-#define SAC_H
-
+#pragma once
 #include <list>
 #include <QObject>
 #include "Objet.h"
-#include <QGraphicsRectItem>
+#include <QGraphicsPixmapItem>
 #include <QString>
 
 
 
-class Sac: public QGraphicsRectItem//,public QObject
+class Sac: public QGraphicsPixmapItem//,public QObject
 {    
     std::list<Objet> items;
     int nb_items;
@@ -19,4 +17,4 @@ public:
     void rmObject( Objet r);
 };
 
-#endif // SAC_H
+
