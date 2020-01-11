@@ -1,19 +1,21 @@
 #include "indice.h"
+#include <string>
+#include <iostream>
 
 // constructeurs
-indice::indice(std::string message)
+indice::indice(QString message)
 {
     text = message;
-    relObj.setName("unnamed");
+    relObj->setName("unnamed");
 }
 
-indice::indice(Objet o)
+indice::indice(Objet* o)
 {
     relObj = o;
     text = "not set";
 }
 
-indice::indice(Objet o, std::string message)
+indice::indice(Objet* o, QString message)
 {
     relObj = o;
     text = message;
@@ -26,19 +28,30 @@ indice::indice(const indice &i)
 }
 //setter
 
-void indice::setText(std::string message)
+void indice::setText(QString message)
 {
-    text = message;
+   // text = message;
+    this->QMessageBox::setText(message);
+    std::cout<<"on est dans setText()"<<std::endl;
+    this-> exec();
 }
 
-void indice::addObjet(Objet o)
+
+// getter
+
+Objet indice::getObjet()
+{
+    return *relObj;
+}
+
+void indice::addObjet(Objet* o)
 {
     relObj = o;
 }
 
 void indice::show()
 {
-    //this->setText("The document has been modified.");
+    //this->QMessageBox::setText("The document has been modified.");
     this->exec();
 }
 

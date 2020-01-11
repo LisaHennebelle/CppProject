@@ -5,6 +5,7 @@
 #include <QObject>
 #include "Objet.h"
 #include <QGraphicsRectItem>
+#include <QString>
 
 
 

@@ -4,6 +4,7 @@
 #include<QKeyEvent>
 #include <QMouseEvent>
 #include<QGraphicsScene>
+#include<string>
 
 // constructeurs
 Objet::Objet()
@@ -11,10 +12,11 @@ Objet::Objet()
     name = "unnamed";
 }
 
-Objet::Objet(std::string nom)
+Objet::Objet(QString nom)
 {
     name = nom;
 }
+
 Objet::Objet(const Objet &o)//:QGraphicsRectItem(o)
 {
     this->setRect(o.rect());
@@ -23,12 +25,12 @@ Objet::Objet(const Objet &o)//:QGraphicsRectItem(o)
 
 
 // getter et setter
-void Objet::setName(std::string nom)
+void Objet::setName(QString nom)
 {
     name = nom;
 }
 
-std::string Objet::getName()
+QString Objet::getName()
 {
     return name;
 }
@@ -76,8 +78,8 @@ void Objet::keyPressEvent(QKeyEvent *event)
             return;}
     }
 
-Objet::~Objet()
+/*Objet::~Objet()
 {
      delete this; //il ne le reconnait pas
-}
+}*/
 

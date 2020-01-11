@@ -7,47 +7,49 @@ Code::Code()
 {
     locked = 1;
     this->setName("unnamed");
-    assObj.setName("unnamed");
+    assObj->setName("unnamed");
 
 }
 
-Code::Code(std::string nom)
+Code::Code(QString nom)
 {
     locked = 1;
     this->setName(nom);
-    assObj.setName("unnamed");
+    assObj->setName("unnamed");
 }
 
-Code::Code(std::string nom ,Objet o)
+Code::Code(QString nom ,Objet* o)
 {
   locked = 1;
   this->setName(nom);
   assObj = o; //pb lies au copy constructor
-  i.addObjet(o);
+  i->addObjet(o);
 
 }
 
 // set attributs
-void Code::associerNom(std::string nom)
+void Code::associerNom(QString nom)
 {
     this->setName(nom);
 }
 
-void Code::associerObj(Objet o)
+void Code::associerObj(Objet* o)
 {
     assObj = o;
-    i.addObjet(o);
+    i->addObjet(o);
 }
 
 
-void Code::associerIndice(indice i)
+void Code::associerIndice(indice* in)
 {
-    i = i;
+    i = in;
+    if((i->getObjet()).getName()== "not set")
+        i->addObjet(assObj);
 }
 
 // unlocker le code avec un objet
 // a utiliser si l'utilisateur selectionne un objet puis le code
-void Code::unlockWith(Objet o)
+void Code::unlockWith(Objet* o)
 {
     if (assObj == o) // si l'objet selectionne etait bien celui associé au code
     {
@@ -62,6 +64,6 @@ void Code::unlockWith(Objet o)
 
 void Code::showIndice()
 {
-    i.show();
+    i->show();
     // decrementer le timer du jeu?
 }
