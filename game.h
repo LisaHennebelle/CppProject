@@ -5,19 +5,25 @@
 #include "Objet.h"
 #include "Smoke.h"
 #include "list"
+#define NUM_OBJET 2
+#define NUM_SMOKE 3
 
 class game : public QObject
 {
-    Q_OBJECTS
-    std::list<Objet> items;
-    std::list<Smoke> smokey_items;
-
+    Q_OBJECT
+    std::list<Objet> *items = new std::list<Objet> ;
+    std::list<Smoke> *smokey_items = new std::list<Smoke> ;
+    int over;
 
 public:
     game();
+    ~game();
+    void addObject(Objet & o); // pour que les lock soient changés
+    void addSmoke(Smoke & s);
     void testGame();
+
 public slots:
-    int isGameOver();
+    void isGameOver();
 };
 
 #endif // GAME_H

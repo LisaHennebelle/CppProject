@@ -18,7 +18,7 @@ Sac::Sac()
     qDebug()<<"Mes positions sont " << x() <<" et " << y();
 }
 
-void Sac::addObject(Objet r)
+void Sac::addObject(Objet &r)
 {
     qDebug()<<"addObjet";
     if (r.getFlag() == 1){
@@ -35,20 +35,16 @@ void Sac::addObject(Objet r)
         r.setPos(x()+100*nb_items,y());//on change la position de l'objet pour le mettre dans le sac
     }
 }
-void Sac::rmObject(Objet r)
+void Sac::rmObject(Objet &r)
 {
     for (list<Objet>::iterator it=items.begin(); it != items.end(); ++it)
     {
-        if (*it == r)
+        if (*it == r) //si la liste des items contient r
         {
             items.remove(*it);// on retire l'objet de la liste
              nb_items --; //on decremente le nombre d'items
         }
     }
-
-   //if (items.contains(r)) //si le sac contient l'objet
-       //on retire l'objet
-       //items.takeAt(items.indexOf(r));//index pose pb
 
 }
 

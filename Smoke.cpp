@@ -19,6 +19,11 @@ int Smoke::getLock()
     return locked;
 }
 
+void Smoke::setLock(int l)
+{
+    locked = l;
+}
+
 
 // set attributs
 void Smoke::associerNom(QString nom)
@@ -67,34 +72,39 @@ void Smoke::keyPressEvent(QKeyEvent * event)
         setPos(x()-10,y());
         if( x() > 400 && y() > 300 )
         {
-            qDebug() << "je suis dans le sac";
-            locked =1;
+            qDebug() << "je suis dans le sac" << "et mon nom est" << this->getName();
+            setLock(1);
+            qDebug() << "flag : " << locked;
         }
     }
 
     if( event->key() == Qt::Key_Right){
-        qDebug()<< "Vous venez de selectionner " <<this->getName();
+        //qDebug()<< "Vous venez de selectionner " <<this->getName();
         setPos(x()+10,y());
         if( x() > 400 && y() > 300 )
         {
-            qDebug() << "je suis dans le sac";
-             locked =1;
+            qDebug() << "je suis dans le sac"<< "et mon nom est" << this->getName();
+            setLock(1);
+             qDebug() << "flag : " << locked;
         }}
     if( event->key() == Qt::Key_Up ){
-        qDebug()<< "Vous venez de selectionner " <<this->getName();
+        //qDebug()<< "Vous venez de selectionner " <<this->getName();
         setPos(x(),y()-10);
         if( x() > 400 && y() > 300 )
         {
-            qDebug() << "je suis dans le sac";
-             locked =1;
+            qDebug() << "je suis dans le sac"<< "et mon nom est" << this->getName();
+             setLock(1);
+             qDebug() << "flag : " << locked;
         }}
     if( event->key() == Qt::Key_Down ){
-        qDebug()<< "Vous venez de selectionner " <<this->getName();
+        //qDebug()<< "Vous venez de selectionner " <<this->getName()<< "et mon nom est" << this->getName();
         setPos(x(),y()+10);
         if( x() > 400 && y() > 300 )
         {
-            qDebug() << "je suis dans le sac";
-             locked =1;
+            qDebug() << "je suis dans le sac"<< "et mon nom est" << this->getName();
+              setLock(1);
+              qDebug() << "flag : " << locked;
+
         }}
 
 

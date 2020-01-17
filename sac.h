@@ -13,8 +13,8 @@ class Sac: public QGraphicsPixmapItem//,public QObject
     int nb_items;
 public:
     Sac();
-    void addObject(Objet r);
-    void rmObject( Objet r);
+    void addObject(Objet &r);
+    void rmObject( Objet &r);
 };
 
 

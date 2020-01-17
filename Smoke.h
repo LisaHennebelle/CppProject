@@ -13,6 +13,7 @@ public:
     Smoke();
     Smoke(QString nom);
     int getLock();
+    void setLock(int l);
     void associerNom(QString nom);
     int MouseEvent(QMouseEvent* event); // retourne 1 si l'utilisateur a cliqué sur l'objet
     void keyPressEvent(QKeyEvent* event);
@@ -21,7 +22,7 @@ public:
     void showIndice(); // afficher une fenetre contenant un indice
     //void setUnlockedImage(); //pour l'affichage graphique, une fois que l'objet est ouvert
     //void unlockWith(Objet* o);
-
+    const Smoke operator =(const Smoke& s) const { return s; }
 };
 
 #endif // CODE_H

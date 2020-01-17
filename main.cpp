@@ -4,12 +4,10 @@
 #include "Objet.h"
 #include "sac.h"
 #include "Smoke.h"
+#include "game.h"
 #include <QGraphicsView>
 #include <unistd.h>
 #include<string>
-
-
-
 
 
 
@@ -18,6 +16,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     QGraphicsScene * scene= new QGraphicsScene();
+    game * gameS = new game();
     Sac * sac = new Sac();
     Smoke * rect = new Smoke("clé");
     //rect->setName("clé");
@@ -26,9 +25,15 @@ int main(int argc, char *argv[])
     //cadenas->associerObj(rect);
 
 
-    sac -> addObject(*rect);
+    gameS -> addSmoke(*rect);
+    gameS -> addSmoke(*rect2);
+    gameS -> addSmoke(*cadenas);
     indice *indice_cadenas = new indice("Ceci est une pipe");
+    indice *deuxieme = new indice("Ceci est une flamme");
+    indice *troisieme = new indice("Ceci est un smokey butt");
     cadenas->associerIndice(indice_cadenas);
+    rect->associerIndice(deuxieme);
+    rect2-> associerIndice(troisieme);
 
     rect->setRect(0,0,100,100);
     rect2->setRect(0,0,100,100);
@@ -67,7 +72,7 @@ int main(int argc, char *argv[])
     }*/
     view->show();
    // indice_cadenas->show();
-
+    gameS->testGame();
 
     return a.exec();
 }
