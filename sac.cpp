@@ -15,6 +15,7 @@ Sac::Sac()
     setPos(x()+400, y()+300);//il est represente en bas à droite de l'appli
     nb_items = 0;
     items = list<Objet>();
+    qDebug()<<"Mes positions sont " << x() <<" et " << y();
 }
 
 void Sac::addObject(Objet r)

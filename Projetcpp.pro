@@ -28,14 +28,16 @@ SOURCES += \
     Objet.cpp \
         main.cpp \
     sac.cpp \
-    code.cpp \
-    indice.cpp
+    indice.cpp \
+    Smoke.cpp \
+    game.cpp
 
 HEADERS += \
     Objet.h \
     sac.h \
-    code.h \
-    indice.h
+    indice.h \
+    Smoke.h \
+    game.h
 
 FORMS += \
         mainwindow.ui

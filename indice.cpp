@@ -5,11 +5,12 @@
 // constructeurs
 indice::indice(QString message)
 {
+    this-> QMessageBox::setText(message);
     text = message;
-    relObj->setName("unnamed");
+    //relObj->setName("unnamed");
 }
 
-indice::indice(Objet* o)
+/*indice::indice(Objet* o)
 {
     relObj = o;
     text = "not set";
@@ -19,11 +20,11 @@ indice::indice(Objet* o, QString message)
 {
     relObj = o;
     text = message;
-}
+}*/
 
 indice::indice(const indice &i)
 {
-    this->relObj =i.relObj;
+    //this->relObj =i.relObj;
     this->text = i.text;
 }
 //setter
@@ -38,7 +39,7 @@ void indice::setText(QString message)
 
 
 // getter
-
+/*
 Objet indice::getObjet()
 {
     return *relObj;
@@ -47,7 +48,7 @@ Objet indice::getObjet()
 void indice::addObjet(Objet* o)
 {
     relObj = o;
-}
+}*/
 
 void indice::show()
 {

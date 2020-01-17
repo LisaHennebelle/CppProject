@@ -5,7 +5,7 @@
 
 class Objet:public QGraphicsRectItem, QObject{
     QString name;
-    int flag; // determine si l'objet s'est fait cliqué dessus
+    int flag=0; // determine si l'objet s'est fait cliqué dessus
 public:
     // constructeurs
     Objet();
@@ -16,7 +16,7 @@ public:
     QString getName();
     int getFlag();
 
-    int MouseEvent(QMouseEvent* event); // retourne 1 si l'utilisateur a cliqué sur l'objet
+
     void keyPressEvent(QKeyEvent* event);
    // void tilePressEvent(QKeyEvent *event, int i = 0);
    //~Objet();

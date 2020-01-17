@@ -42,25 +42,7 @@ int Objet::getFlag()
 }
 
 // comportement
-int Objet::MouseEvent(QMouseEvent *event)
-{
-   /* QTimer* qtim = new QTimer(this);// creer un timer pour faire que la fonction soit appelee periodiquement
-    connect(qtim, SIGNAL(timeout()), this, SLOT(move()));
-    qtim->start(50);*/
-    int i = 0;
-    if (event->button() == Qt::LeftButton && i == 0)
-    {
-        i ++;
-        if ( event->globalX() > this->x() && event->globalY() > this-> y()){
-            qDebug()<<"flag à 1 de "<<this-> getName();
-        flag = 1;
-        return 1;
-        }
-    }
-    qDebug()<<"flag à 0 de "<<this-> getName();
-    flag = 0;
-    return 0;
-}
+
 void Objet::keyPressEvent(QKeyEvent *event)
 {
     static int i =0;
@@ -80,25 +62,7 @@ void Objet::keyPressEvent(QKeyEvent *event)
         qDebug()<< "Vous venez de selectionner " <<this->getName();
         setPos(x(),y()+10);}
 
-    if (event->key() == Qt::Key_Enter)
-    {
-            if(j == 0) //premiere fois que l'uitlisateur appuie sur entree en ayant selectionné l'objet
-            {
-                j ++;
-                if ( this->x() < 500 && this-> y() < 300){
-                    qDebug()<<"flag à 1 de "<<this-> getName();
-                flag = 1;
-                }
 
-            else
-            {
-                qDebug()<<"flag à 0 de "<<this-> getName();
-                flag = 0;
-            }
-            }
-
-
-     }
 
     if(event->key() == Qt::Key_0)
         {

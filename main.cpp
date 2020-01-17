@@ -3,10 +3,14 @@
 #include <QGraphicsScene>
 #include "Objet.h"
 #include "sac.h"
-#include "code.h"
+#include "Smoke.h"
 #include <QGraphicsView>
 #include <unistd.h>
 #include<string>
+
+
+
+
 
 
 int main(int argc, char *argv[])
@@ -15,15 +19,15 @@ int main(int argc, char *argv[])
 
     QGraphicsScene * scene= new QGraphicsScene();
     Sac * sac = new Sac();
-    Objet * rect = new Objet("clé");
+    Smoke * rect = new Smoke("clé");
     //rect->setName("clé");
-    Objet * rect2 = new Objet();
-    Code * cadenas = new Code("cadenas");
-    cadenas->associerObj(rect);
+    Smoke * rect2 = new Smoke();
+    Smoke * cadenas = new Smoke("cadenas");
+    //cadenas->associerObj(rect);
 
 
     sac -> addObject(*rect);
-    indice *indice_cadenas = new indice("trouvez la clé");
+    indice *indice_cadenas = new indice("Ceci est une pipe");
     cadenas->associerIndice(indice_cadenas);
 
     rect->setRect(0,0,100,100);
@@ -37,8 +41,8 @@ int main(int argc, char *argv[])
 
     scene->addItem(rect);
     scene->addItem(rect2);
-    scene-> addItem(sac);
-    scene-> addItem(cadenas);
+    scene->addItem(sac);
+    scene->addItem(cadenas);
 
 
     //make rect focusable
@@ -57,14 +61,12 @@ int main(int argc, char *argv[])
     QGraphicsView * view = new QGraphicsView(scene);
     view ->resize(1500, 1000);
     view->show();
-    if (rect2->getFlag()==1)
+    /*if (rect2->getFlag()==1)
     {
         sac->addObject(*rect2);
-    }
+    }*/
     view->show();
-     usleep(15);
-    // QTest::qSleep(100);
-    indice_cadenas->show();
+   // indice_cadenas->show();
 
 
     return a.exec();
