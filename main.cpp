@@ -5,6 +5,7 @@
 #include "sac.h"
 #include "Smoke.h"
 #include "game.h"
+#include "background.h"
 #include <QGraphicsView>
 #include <unistd.h>
 #include<string>
@@ -15,64 +16,70 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    QGraphicsScene * scene= new QGraphicsScene();
+   // QGraphicsScene * scene= new QGraphicsScene();
+
     game * gameS = new game();
-    Sac * sac = new Sac();
-    Smoke * rect = new Smoke("clé");
-    //rect->setName("clé");
-    Smoke * rect2 = new Smoke();
-    Smoke * cadenas = new Smoke("cadenas");
-    //cadenas->associerObj(rect);
+  /*  Sac * sac = new Sac();
+    Smoke * loco = new Smoke("loco");
+    loco->addPixmapnew();
+    Smoke * cheminee = new Smoke("cheminee");
+
+    cheminee->addPixmapnew();
+    Smoke * cigarette = new Smoke("cigarette");
+    cigarette->addPixmapnew();
+    //cigarette->associerObj(loco);
 
 
-    gameS -> addSmoke(*rect);
-    gameS -> addSmoke(*rect2);
-    gameS -> addSmoke(*cadenas);
-    indice *indice_cadenas = new indice("Ceci est une pipe");
+    gameS -> addSmoke(*loco);
+    gameS -> addSmoke(*cheminee);
+    gameS -> addSmoke(*cigarette);
+    indice *indice_cigarette = new indice("Ceci est une pipe");
     indice *deuxieme = new indice("Ceci est une flamme");
     indice *troisieme = new indice("Ceci est un smokey butt");
-    cadenas->associerIndice(indice_cadenas);
-    rect->associerIndice(deuxieme);
-    rect2-> associerIndice(troisieme);
+    cigarette->associerIndice(indice_cigarette);
+    loco->associerIndice(deuxieme);
+    cheminee-> associerIndice(troisieme);
 
-    rect->setRect(0,0,100,100);
-    rect2->setRect(0,0,100,100);
-    rect2->setPos(rect2->x()+200, rect2->y()+300);
-    cadenas->setRect(0,0,50,50);
-    cadenas->setPos(cadenas->x()+400, cadenas->y());
+    //loco->setloco(0,0,100,100);
+    //cheminee->setloco(0,0,100,100);
+    cheminee->setPos(cheminee->x()+200, cheminee->y()+300);
+   // cigarette->setloco(0,0,50,50);
+    cigarette->setPos(cigarette->x()+400, cigarette->y());
 
 
-    //sac->addObject(*rect);
+    //sac->addObject(*loco);
 
-    scene->addItem(rect);
-    scene->addItem(rect2);
+    // /* scene->addItem(loco);
+    scene->addItem(cheminee);
     scene->addItem(sac);
-    scene->addItem(cadenas);
+    // scene->addItem(cigarette);/
 
 
-    //make rect focusable
-    rect->setFlag(QGraphicsItem::ItemIsFocusable);
-    rect->setFocus();
+    //make loco focusable
+    loco->setFlag(QGraphicsItem::ItemIsFocusable);
+    loco->setFocus();
 
-    rect2->setFlag(QGraphicsItem::ItemIsFocusable);
-    rect2->setFocus();
+    cheminee->setFlag(QGraphicsItem::ItemIsFocusable);
+    cheminee->setFocus();
 
     sac->setFlag(QGraphicsItem::ItemIsFocusable);
     sac->setFocus();
 
-    cadenas->setFlag(QGraphicsItem::ItemIsFocusable);
-    cadenas->setFocus();
+    cigarette->setFlag(QGraphicsItem::ItemIsFocusable);
+    cigarette->setFocus();*/
 
-    QGraphicsView * view = new QGraphicsView(scene);
-    view ->resize(1500, 1000);
-    view->show();
-    /*if (rect2->getFlag()==1)
-    {
-        sac->addObject(*rect2);
-    }*/
-    view->show();
-   // indice_cadenas->show();
+    QGraphicsView * view = new QGraphicsView(gameS->scenery);
+    //gameS->scenery->addItem(sac);
+    //view->
+    view ->resize(1500, 900);
     gameS->testGame();
+    view->show();
+    /*if (cheminee->getFlag()==1)
+    {
+        sac->addObject(*cheminee);
+    }*/
+    // indice_cigarette->show();
+
 
     return a.exec();
 }

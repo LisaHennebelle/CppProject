@@ -10,17 +10,6 @@ indice::indice(QString message)
     //relObj->setName("unnamed");
 }
 
-/*indice::indice(Objet* o)
-{
-    relObj = o;
-    text = "not set";
-}
-
-indice::indice(Objet* o, QString message)
-{
-    relObj = o;
-    text = message;
-}*/
 
 indice::indice(const indice &i)
 {

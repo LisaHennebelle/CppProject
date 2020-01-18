@@ -3,7 +3,7 @@
 #include <QMouseEvent>
 #include<QString>
 
-class Objet:public QGraphicsRectItem, QObject{
+class Objet:public QGraphicsPixmapItem, QObject{
     QString name;
     int flag=0; // determine si l'objet s'est fait cliqué dessus
 public:
@@ -15,6 +15,8 @@ public:
     void setName(QString nom);
     QString getName();
     int getFlag();
+    void addPixmap(QPixmap *qp);
+    void addPixmapnew();// recupere le nom de l'objet et le relie à l'image contenu dans le dossier resources
 
 
     void keyPressEvent(QKeyEvent* event);

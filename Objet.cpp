@@ -20,7 +20,7 @@ Objet::Objet(QString nom)
 
 Objet::Objet(const Objet &o)//:QGraphicsRectItem(o)
 {
-    this->setRect(o.rect());
+    //this->setRect(o.rect());
     this->name = o.name;
 }
 
@@ -90,8 +90,20 @@ void Objet::keyPressEvent(QKeyEvent *event)
              qDebug()<< "le code a été correctement saisi";
             return;}
     }
+void Objet::addPixmap(QPixmap *qp)
+{
+    setPixmap(*qp);
+}
 
-
+void Objet::addPixmapnew()
+{
+    QString *pixmapname = new QString();
+   *pixmapname = (":/images/images/" + this->getName() + ".png");
+    qDebug() << *pixmapname;
+    QPixmap *p = new QPixmap(*pixmapname);
+    qDebug() << "pixmap créé";
+    setPixmap(*p);
+}
 /*Objet::~Objet()
 {
      delete this; //il ne le reconnait pas

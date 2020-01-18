@@ -12,16 +12,14 @@ Sac::Sac()
 {
     //etRect(0,0,800,100);//le sac peut contenir 8 objet de taille 100x100
     setPixmap(QPixmap(":/images/images/sac.png"));
-    setPos(x()+400, y()+300);//il est represente en bas à droite de l'appli
+    setPos(x()+400, y()+200);//il est represente en bas à droite de l'appli
     nb_items = 0;
     items = list<Objet>();
-    qDebug()<<"Mes positions sont " << x() <<" et " << y();
 }
 
 void Sac::addObject(Objet &r)
 {
-    qDebug()<<"addObjet";
-    if (r.getFlag() == 1){
+       if (r.getFlag() == 1){
         if (nb_items >= MAX) //si le sac est rempli on cree une erreur
         {
             qDebug() << "Trop d'objets, on ne peut pas en ajouter d'autres";

@@ -1,5 +1,6 @@
 #include "Smoke.h"
 #include "indice.h"
+#include <QGraphicsColorizeEffect>
 #include<QDebug>
 
 
@@ -111,8 +112,13 @@ void Smoke::keyPressEvent(QKeyEvent * event)
     if (event->key() == Qt::Key_Return)
     {
         qDebug()<<"entree ";
+        QGraphicsColorizeEffect *eff =new QGraphicsColorizeEffect();
+        QColor *red = new QColor();
+        red->setRedF(0.1);// setRedF prend en argument une valeur flottante entre 0.0 et 1.0
+        eff->setColor(*red);
+        this->setGraphicsEffect(eff);
         i->show();
-        //flag = 1;
+        //locked = 1;
      }
 
 }
