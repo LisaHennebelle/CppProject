@@ -2,16 +2,16 @@
 #define BACKGROUND_H
 #include <QWidget>
 #include <QtGui>
-#include <QGraphicsRectItem>
+#include <QGraphicsPixmapItem>
 #include <QWidget>
 
 
-class background: public QWidget, public QGraphicsRectItem{
+class background: public QGraphicsPixmapItem{
    protected:
     int  ok = 0;
 public:
     background();
-void paintEvent(QPaintEvent *pe);
+//void paintEvent(QPaintEvent *pe);
 signals:
 
 public slots:

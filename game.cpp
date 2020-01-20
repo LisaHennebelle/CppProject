@@ -16,6 +16,9 @@ game::game()
     mb->setText("GAME OVER");
 
     over = 0;// over initialisé à 0
+    // creation du background bg
+    background *bg = new background();
+    scenery->addItem(bg);
 
     // ajout de la liste des objet et ajout à la scene
     addItems();
@@ -69,10 +72,6 @@ void game::addSmoke(Smoke *s)
 void game::addItems()
 {
     items->resize(NUM_OBJET);
-    // creation du background bg
-    Objet *bg = new Objet("usine");
-    bg->setPos(bg->x(), bg->y());
-    this->addObject(*bg);
 
 
     // création des objets
@@ -138,7 +137,7 @@ void game::isGameOver()
 
     // une fois qu'on est arrivé là , tous les objets smoke sont dans le sac
     //c'est la fin du jeu
-
+    over = 1;
     mb->show();*/
 }
 void game::testGame()
@@ -146,6 +145,10 @@ void game::testGame()
        QTimer * timer = new QTimer();
        QObject::connect(timer, SIGNAL(timeout()), this, SLOT(isGameOver()));
        timer->start(500);
+       if (over == 1) // si la partie est arrivée à sa fin on arrete le timer pour eviter de faire réapparaitre la fenetre "GAME OVER"
+       {
+           timer->stop();
+       }
 }
 
 
