@@ -12,7 +12,7 @@ game::game()
 {
     // taille des listes imposée
 
-    smokey_items->resize(NUM_SMOKE);
+    //smokey_items->resize(NUM_SMOKE);
     mb->setText("GAME OVER");
 
     over = 0;// over initialisé à 0
@@ -36,12 +36,12 @@ game::~game()
 {
     qDebug()<<"game finished";
     //eliminitaion de tous les elements de la liste items
-    for (std::list<Objet>::iterator it_o=items->begin(); it_o !=items->end(); it_o++)
+    for (QList<Objet>::iterator it_o=items->begin(); it_o !=items->end(); it_o++)
     {
         items -> erase(it_o);
     }
     // elimination de tous les elements de la liste smokey_items
-    for (std::list<Smoke*>::iterator it=smokey_items->begin(); it !=smokey_items->end(); it++)
+    for (QList<Smoke*>::iterator it=smokey_items->begin(); it !=smokey_items->end(); it++)
     {
     smokey_items -> erase(it);
     }
@@ -71,7 +71,7 @@ void game::addSmoke(Smoke *s)
 
 void game::addItems()
 {
-    items->resize(NUM_OBJET);
+    //items->resize(NUM_OBJET);
 
 
     // création des objets
@@ -122,7 +122,7 @@ void game::addSmokeyItems()
 void game::isGameOver()
 {
         qDebug()<<"is game over?"<< " all i wonder";
-   /* for (std::list<Smoke*>::iterator it=smokey_items->begin(); it !=smokey_items->end(); ++it)
+    for (QList<Smoke*>::iterator it=smokey_items->begin(); it !=smokey_items->end(); ++it)
     {
         qDebug()<< "testing "<<(*it)->getName();
         if ((*it)->x() < 1100 || (*it)->y() < 600) // si un des objets fumée du jeu n'est pas dans le sac
@@ -138,16 +138,19 @@ void game::isGameOver()
     // une fois qu'on est arrivé là , tous les objets smoke sont dans le sac
     //c'est la fin du jeu
     over = 1;
-    mb->show();*/
+    qDebug()<<"over is set a 1";
+    mb->show();
+    timer->stop(); //on stoppe le timer
+
 }
 void game::testGame()
 {
-       QTimer * timer = new QTimer();
+
        QObject::connect(timer, SIGNAL(timeout()), this, SLOT(isGameOver()));
-       timer->start(500);
-       if (over == 1) // si la partie est arrivée à sa fin on arrete le timer pour eviter de faire réapparaitre la fenetre "GAME OVER"
+       qDebug()<<"let's start timer";
+       if(over != 1)
        {
-           timer->stop();
+        timer->start(500);
        }
 }
 

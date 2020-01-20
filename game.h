@@ -14,11 +14,11 @@
 class game : public QObject{
     Q_OBJECT
     QMessageBox* mb = new QMessageBox;
-    std::list<Objet> *items = new std::list<Objet> ();
-
+    QList<Objet> *items = new QList<Objet> ();
+    QTimer * timer = new QTimer();
 
 public:
-    std::list<Smoke *> *smokey_items = new std::list<Smoke*>() ;
+    QList<Smoke *> *smokey_items = new QList<Smoke*>() ;
     int over;
      QGraphicsScene *scenery = new QGraphicsScene;
      // vue publique
