@@ -13,7 +13,7 @@
 
 class game : public QObject{
     Q_OBJECT
-
+    QMessageBox* mb = new QMessageBox;
     std::list<Objet> *items = new std::list<Objet> ();
     std::vector<Smoke *> *smokey_items = new std::vector<Smoke*>() ;
     int over;

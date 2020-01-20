@@ -13,7 +13,7 @@ game::game()
     // taille des listes imposée
     items->resize(NUM_OBJET);
     smokey_items->resize(NUM_SMOKE);
-    mb ->setText("GAME OVER");
+    mb->setText("GAME OVER");
 
     // création des objets
     QString a = "A";
