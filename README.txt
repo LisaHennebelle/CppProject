@@ -11,7 +11,7 @@ J'ai rajouté une fonctionnalité: les objets reliés à la fumée changent de c
 /!\ : j'ai rajouté une fonction qui permet d'afficher les objets en fonction de l'image correspondante dans les ressources 
  mais pour qu'elle fonctionne il faut faire comme suit:
 
-	-creer un objet smoke ou objet
+	-creer un objet smoke ou objet dans la fonction addItems() ou addSmokeyItems() de game
 	-le nommer (dans le constructeur : Objet *example = new Objet("example"); ou apres example->setName("example");
 	-placer dans les ressources un fichier .png nommé COMME l'objet
 	-Appeler la fonction addPixmapnew() qui lui associe immédiatement le fichier .png du même nom dans les ressources ( example -> addPixmapnew(); )

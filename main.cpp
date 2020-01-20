@@ -71,15 +71,9 @@ int main(int argc, char *argv[])
     QGraphicsView * view = new QGraphicsView(gameS->scenery);
     //gameS->scenery->addItem(sac);
     //view->
-    view ->resize(1500, 900);
+      view ->resize(1500, 900);
     gameS->testGame();
     view->show();
-    /*if (cheminee->getFlag()==1)
-    {
-        sac->addObject(*cheminee);
-    }*/
-    // indice_cigarette->show();
-
 
     return a.exec();
 }

@@ -15,10 +15,11 @@ class game : public QObject{
     Q_OBJECT
     QMessageBox* mb = new QMessageBox;
     std::list<Objet> *items = new std::list<Objet> ();
-    std::vector<Smoke *> *smokey_items = new std::vector<Smoke*>() ;
-    int over;
+
 
 public:
+    std::list<Smoke *> *smokey_items = new std::list<Smoke*>() ;
+    int over;
      QGraphicsScene *scenery = new QGraphicsScene;
      // vue publique
     game();
@@ -27,6 +28,8 @@ public:
     void paintEvent(QPaintEvent *pe);
     void addObject(Objet & o); // pour que les lock soient changés
     void addSmoke(Smoke *s);
+    void addItems();
+    void addSmokeyItems();
     void testGame();
     void drawBackground ( QPainter * painter, const QRectF & rect );
 

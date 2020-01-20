@@ -71,7 +71,7 @@ void Smoke::keyPressEvent(QKeyEvent * event)
     {
         qDebug()<< "left " <<this->getName();
         setPos(x()-10,y());
-        if( x() > 400 && y() > 300 )
+        if( x() > 1200 && y() > 800 )
         {
             qDebug() << "je suis dans le sac" << "et mon nom est" << this->getName();
             setLock(1);
@@ -82,7 +82,7 @@ void Smoke::keyPressEvent(QKeyEvent * event)
     if( event->key() == Qt::Key_Right){
         //qDebug()<< "Vous venez de selectionner " <<this->getName();
         setPos(x()+10,y());
-        if( x() > 400 && y() > 300 )
+        if( x() > 1200 && y() > 800 )
         {
             qDebug() << "je suis dans le sac"<< "et mon nom est" << this->getName();
             setLock(1);
@@ -91,7 +91,7 @@ void Smoke::keyPressEvent(QKeyEvent * event)
     if( event->key() == Qt::Key_Up ){
         //qDebug()<< "Vous venez de selectionner " <<this->getName();
         setPos(x(),y()-10);
-        if( x() > 400 && y() > 300 )
+        if( x() > 1200 && y() > 800 )
         {
             qDebug() << "je suis dans le sac"<< "et mon nom est" << this->getName();
              setLock(1);
@@ -100,7 +100,7 @@ void Smoke::keyPressEvent(QKeyEvent * event)
     if( event->key() == Qt::Key_Down ){
         //qDebug()<< "Vous venez de selectionner " <<this->getName()<< "et mon nom est" << this->getName();
         setPos(x(),y()+10);
-        if( x() > 400 && y() > 300 )
+        if( x() > 1200 && y() > 800 )
         {
             qDebug() << "je suis dans le sac"<< "et mon nom est" << this->getName();
               setLock(1);
