@@ -71,7 +71,7 @@ void Smoke::keyPressEvent(QKeyEvent * event)
     {
         qDebug()<< "left " <<this->getName();
         setPos(x()-10,y());
-        if( x() > 1200 && y() > 800 )
+        if( x() > 1100 && y() > 600 )
         {
             qDebug() << "je suis dans le sac" << "et mon nom est" << this->getName();
             setLock(1);
@@ -82,7 +82,7 @@ void Smoke::keyPressEvent(QKeyEvent * event)
     if( event->key() == Qt::Key_Right){
         //qDebug()<< "Vous venez de selectionner " <<this->getName();
         setPos(x()+10,y());
-        if( x() > 1200 && y() > 800 )
+        if( x() > 1100 && y() > 600 )
         {
             qDebug() << "je suis dans le sac"<< "et mon nom est" << this->getName();
             setLock(1);
@@ -91,7 +91,7 @@ void Smoke::keyPressEvent(QKeyEvent * event)
     if( event->key() == Qt::Key_Up ){
         //qDebug()<< "Vous venez de selectionner " <<this->getName();
         setPos(x(),y()-10);
-        if( x() > 1200 && y() > 800 )
+        if( x() > 1100 && y() > 600 )
         {
             qDebug() << "je suis dans le sac"<< "et mon nom est" << this->getName();
              setLock(1);
@@ -100,7 +100,7 @@ void Smoke::keyPressEvent(QKeyEvent * event)
     if( event->key() == Qt::Key_Down ){
         //qDebug()<< "Vous venez de selectionner " <<this->getName()<< "et mon nom est" << this->getName();
         setPos(x(),y()+10);
-        if( x() > 1200 && y() > 800 )
+        if( x() > 1100 && y() > 600 )
         {
             qDebug() << "je suis dans le sac"<< "et mon nom est" << this->getName();
               setLock(1);
@@ -114,7 +114,7 @@ void Smoke::keyPressEvent(QKeyEvent * event)
         qDebug()<<"entree ";
         QGraphicsColorizeEffect *eff =new QGraphicsColorizeEffect();
         QColor *red = new QColor();
-        red->setRedF(0.1);// setRedF prend en argument une valeur flottante entre 0.0 et 1.0
+        red->setRedF(0.5);// setRedF prend en argument une valeur flottante entre 0.0 et 1.0
         eff->setColor(*red);
         this->setGraphicsEffect(eff);
         i->show();

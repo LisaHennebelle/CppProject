@@ -105,21 +105,28 @@ void game::addSmokeyItems()
     cigarette->setPos(cigarette->x()+400, cigarette->y());
 
     // ajout des indices
-    indice *indice_cigarette = new indice("Ceci est une pipe");
-    indice *deuxieme = new indice("Ceci est une flamme");
-    indice *troisieme = new indice("Ceci est un smokey butt");
+    indice *indice_cigarette = new indice("Le saviez-vous? \n La fumée de cigarettes est un aérosol, un mélange de gaz et de particules qui contient quatre mille substances,\
+ dont plus de quarante sont cancérigènes. Une cigarette contient du tabac, de la nicotine, des agents de saveur et de texture : c’est ce qu’on lit sur les\
+ paquets de cigarettes. Ce qu’on ne sait pas toujours, c’est qu’une fois allumée, la cigarette devient une véritable usine chimique. Sa combustion provoque\
+ la formation de très nombreuses substances toxiques, dont les goudrons, des gaz toxiques (monoxyde de carbone, oxyde d’azote, acide cyanhydrique, ammoniac) et des métaux lourds (cadmium, mercure, plomb, chrome).");
+
+    indice *indice_loco = new indice("Le saviez-vous? \n Les locomotives à vapeur conservent un certain succès pour les lignes de haute montagne\
+ parce que la traction à vapeur est favorisée par la baisse de la pression atmosphérique due à l'altitude abaissant le point\
+ d'ébullition de l'eau. Cela permet des économies de combustible et de meilleures performances. ");
+
+    indice *indice_cheminee = new indice("Ceci est un smokey");
     cigarette->associerIndice(indice_cigarette);
-    loco->associerIndice(deuxieme);
-    cheminee-> associerIndice(troisieme);
+    loco->associerIndice(indice_loco);
+    cheminee-> associerIndice(indice_cheminee);
 }
 
 void game::isGameOver()
 {
         qDebug()<<"is game over?"<< " all i wonder";
-    for (std::list<Smoke*>::iterator it=smokey_items->begin(); it !=smokey_items->end(); ++it)
+   /* for (std::list<Smoke*>::iterator it=smokey_items->begin(); it !=smokey_items->end(); ++it)
     {
         qDebug()<< "testing "<<(*it)->getName();
-        if ((*it)->x() < 1200 || (*it)->y() < 800) // si un des objets fumée du jeu n'est pas dans le sac
+        if ((*it)->x() < 1100 || (*it)->y() < 600) // si un des objets fumée du jeu n'est pas dans le sac
         {
             qDebug()<<" pos de l'objet "<< (*it)->x() << "et " << (*it)->y();
             return; //on sort de la fonction
@@ -132,7 +139,7 @@ void game::isGameOver()
     // une fois qu'on est arrivé là , tous les objets smoke sont dans le sac
     //c'est la fin du jeu
 
-    mb->show();
+    mb->show();*/
 }
 void game::testGame()
 {
