@@ -12,5 +12,6 @@
         <file>images/volcan.png</file>
         <file>images/vapoteur.png</file>
         <file>images/jambon.png</file>
+        <file>images/chaussette.png</file>
     </qresource>
 </RCC>

@@ -4,6 +4,8 @@
 #include <QTimer>
 #include<QKeyEvent>
 #include <QMouseEvent>
+#include <QGraphicsColorizeEffect>
+#include <QMessageBox>
 #include<QGraphicsScene>
 #include<string>
 
@@ -45,9 +47,7 @@ int Objet::getFlag()
 
 void Objet::keyPressEvent(QKeyEvent *event)
 {
-    static int i =0;
-    static int j = 0;
-
+      QMessageBox * qm = new QMessageBox();
     if( event->key() == Qt::Key_Left ){
         qDebug()<< "Vous venez de selectionner " <<this->getName();
         setPos(x()-10,y());}
@@ -66,29 +66,60 @@ void Objet::keyPressEvent(QKeyEvent *event)
 
     if(event->key() == Qt::Key_0)
         {
-           qDebug()<< "code saisi";
-           i = 1;
-           //return keyPressEvent(event);
+            qm ->setText("Mauvais bouton ...");
+            qm ->show();
         }
-         if(event->key() == Qt::Key_1 && i == 1)
+         if(event->key() == Qt::Key_1 )
         {
-           i++;
-           //return keyPressEvent(event);
+            qm ->setText("Pourquoi des chiffres? ");
+            qm ->show();
         }
 
-        if(event->key() == Qt::Key_2 && i == 2)
+         if(event->key() == Qt::Key_V)
+        {
+             QGraphicsColorizeEffect * qc = new QGraphicsColorizeEffect();
+             QColor *dark = new QColor();
+             dark ->setGreenF(0.1);
+             qc->setColor(*dark);
+            setGraphicsEffect(qc);
+        }
+
+         if(event->key() == Qt::Key_R)
+        {
+             QGraphicsColorizeEffect * qc = new QGraphicsColorizeEffect();
+             QColor *dark = new QColor();
+             dark ->setRedF(0.1);
+             qc->setColor(*dark);
+            setGraphicsEffect(qc);
+        }
+         if(event->key() == Qt::Key_B)
+        {
+             QGraphicsColorizeEffect * qc = new QGraphicsColorizeEffect();
+             QColor *dark = new QColor();
+             dark ->setBlueF(0.1);
+             qc->setColor(*dark);
+            setGraphicsEffect(qc);
+        }
+
+
+         if(event->key() == Qt::Key_I )
+        {
+            qm ->setText("Le but est simple :\
+                         retrouvez les objets relatifs à la fumée et mettez les dans le sac avec les flèches de votre clavier!\
+                         \n\n N'hésitez pas à tester d'autres touches, vous aurez peut-être des surprises ... ");
+            qm ->show();
+        }
+
+
+        if(event->key() == Qt::Key_2 || event->key() == Qt::Key_3  || event->key() == Qt::Key_4  || event->key() == Qt::Key_5 || event->key() == Qt::Key_6 || event->key() == Qt::Key_7 || event->key() == Qt::Key_8 || event->key() == Qt::Key_9 )
        {
-           i++;
-           //return keyPressEvent(event);
+            qm->setText("Ceci est inutile... ");
+            qm->show();
+
         }
 
-         if(event->key() == Qt::Key_3 && i == 3)
-        {
-           //return keyPressEvent(event);
-        }
-        if (i == 4) {
-             qDebug()<< "le code a été correctement saisi";
-            return;}
+
+
     }
 void Objet::addPixmap(QPixmap *qp)
 {
@@ -104,8 +135,5 @@ void Objet::addPixmapnew()
     qDebug() << "pixmap créé";
     setPixmap(*p);
 }
-/*Objet::~Objet()
-{
-     delete this; //il ne le reconnait pas
-}*/
+
 

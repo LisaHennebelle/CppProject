@@ -34,6 +34,16 @@ retrouvez les objets relatifs à la fumée et mettez les dans le sac avec les fl
     //ajout de la liste des smokey items et ajout à la scene
     addSmokeyItems();
 
+    //ajout d'une chausette
+    Objet * chaussette = new Objet("chaussette");
+    chaussette->addPixmapnew();
+    items->push_back(chaussette);
+    scenery->addItem(chaussette);
+    chaussette->setFlag(QGraphicsItem::ItemIsFocusable);
+    chaussette->setFocus();
+    chaussette -> setPos(chaussette->x() + 100 , chaussette ->y() + 500);
+    addObject(chaussette);
+
     qDebug("game created with success");
 }
 game::~game()
