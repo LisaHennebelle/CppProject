@@ -118,7 +118,7 @@ void game::addSmokeyItems()
     addSmoke(encens);
     // set location
 
-    loco->setPos(loco->x()+ 670, loco->y()+ 410);
+    loco->setPos(loco->x()+0, loco->y()+ 750);
     cheminee->setPos(cheminee->x()+ 90, cheminee->y()+ 180);
     cigarette->setPos(cigarette->x()+ 400, cigarette->y()+ 825);
     volcan ->setPos(volcan->x()+ 40, volcan->y()+ 340);
@@ -131,15 +131,14 @@ void game::addSmokeyItems()
     // ajout des indices
     QPixmap * otto = new QPixmap(":/images/images/ottoDix");
     QPixmap *monet = new QPixmap(":/images/images/Monet");
-    indice *indice_cigarette = new indice("Le saviez-vous? \n Ce qu’on ne sait pas toujours, c’est qu’une fois allumée, la cigarette devient une véritable usine chimique. Sa combustion provoque\
+    indice *indice_cigarette = new indice(" Petit moment artistique : \n Portrait of Silvia Von Harden - Otto DIX\n Le saviez-vous? \n Ce qu’on ne sait pas toujours, c’est qu’une fois allumée, la cigarette devient une véritable usine chimique. Sa combustion provoque\
  la formation de très nombreuses substances toxiques, dont les goudrons, des gaz toxiques (monoxyde de carbone, oxyde d’azote, acide cyanhydrique, ammoniac) et des métaux lourds\
- (cadmium, mercure, plomb, chrome).\n Petit moment artistique : \n Portrait of Silvia Von Harden - Otto DIX ");
+ (cadmium, mercure, plomb, chrome).\n ");
     indice_cigarette->setIconPixmap(*otto);
 
-    indice *indice_loco = new indice("Le saviez-vous? \n Les locomotives à vapeur conservent un certain succès pour les lignes de haute montagne\
+    indice *indice_loco = new indice("Petit moment artistique : \n La Gare Saint-Lazare - Claude MONET\n Le saviez-vous? \n Les locomotives à vapeur conservent un certain succès pour les lignes de haute montagne\
  parce que la traction à vapeur est favorisée par la baisse de la pression atmosphérique due à l'altitude abaissant le point\
- d'ébullition de l'eau. Cela permet des économies de combustible et de meilleures performances.\n Petit moment artistique : \n \
-La Gare Saint-Lazare - Claude MONET ");
+ d'ébullition de l'eau. Cela permet des économies de combustible et de meilleures performances.\n  ");
    indice_loco->setIconPixmap(*monet);
 
 
