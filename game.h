@@ -14,7 +14,7 @@
 class game : public QObject{
     Q_OBJECT
     QMessageBox* mb = new QMessageBox;
-    QList<Objet> *items = new QList<Objet> ();
+    QList<Objet*> *items = new QList<Objet*> ();
     QTimer * timer = new QTimer();
 
 public:
@@ -26,7 +26,7 @@ public:
     ~game();
     void test(Smoke s);
     void paintEvent(QPaintEvent *pe);
-    void addObject(Objet & o); // pour que les lock soient changés
+    void addObject(Objet * o); // pour que les lock soient changés
     void addSmoke(Smoke *s);
     void addItems();
     void addSmokeyItems();

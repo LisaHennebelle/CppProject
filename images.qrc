@@ -5,5 +5,12 @@
         <file>images/loco.png</file>
         <file>images/cigarette.png</file>
         <file>images/usine.png</file>
+        <file>images/ottoDix.png</file>
+        <file>images/Monet.png</file>
+        <file>images/chambre.png</file>
+        <file>images/encens.png</file>
+        <file>images/volcan.png</file>
+        <file>images/vapoteur.png</file>
+        <file>images/jambon.png</file>
     </qresource>
 </RCC>

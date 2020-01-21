@@ -5,7 +5,7 @@ background::background()
 {
     setActive(true);
     this->setPos(this->x(), this->y());
-    QPixmap *qp  = new QPixmap(":/images/images/usine.png");
+    QPixmap *qp  = new QPixmap(":/images/images/chambre.png");
     this->setPixmap(*qp);
     this->setFlag(QGraphicsItem::ItemIsFocusable);
     this->setFocus();

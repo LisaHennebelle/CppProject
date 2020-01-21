@@ -11,10 +11,14 @@
 game::game()
 {
     // taille des listes imposée
+    QMessageBox * debut = new QMessageBox();
+    debut->setText("Vous allez jouer a notre jeu 'La fumée autour de nous'\n Le but est simple :\
+retrouvez les objets relatifs à la fumée et mettez les dans le sac avec les flèches de votre clavier!\
+\n N'hésitez pas à tester d'autres touches, vous aurez peut-être des surprises ... ");
+    debut->show();
 
     //smokey_items->resize(NUM_SMOKE);
-    mb->setText("GAME OVER");
-
+    mb->setText("Congrats");
     over = 0;// over initialisé à 0
     // creation du background bg
     background *bg = new background();
@@ -36,7 +40,7 @@ game::~game()
 {
     qDebug()<<"game finished";
     //eliminitaion de tous les elements de la liste items
-    for (QList<Objet>::iterator it_o=items->begin(); it_o !=items->end(); it_o++)
+    for (QList<Objet*>::iterator it_o=items->begin(); it_o !=items->end(); it_o++)
     {
         items -> erase(it_o);
     }
@@ -49,14 +53,14 @@ game::~game()
 
 
 
-void game::addObject(Objet & o)
+void game::addObject(Objet * o)
 {
-    o.addPixmapnew();
+    o->addPixmapnew();
     items->push_back(o);
-    scenery->addItem(&o);
-    o.setFlag(QGraphicsItem::ItemIsFocusable);
-    o.setFocus();
-    qDebug()<<"objet "<<o.getName()<<" ajouté";
+    scenery->addItem(o);
+    o->setFlag(QGraphicsItem::ItemIsFocusable);
+    o->setFocus();
+    qDebug()<<"objet "<<o->getName()<<" ajouté";
 }
 
 void game::addSmoke(Smoke *s)
@@ -82,7 +86,7 @@ void game::addItems()
         QString name = "objet_ "+ a ;
         a = a+1;
         Objet *o = new Objet(name);
-        items->push_back(*o);
+        items->push_back(o);
         qDebug() << "ajout de l'objet : "<< o->getName();
 
     }
@@ -91,27 +95,53 @@ void game::addItems()
 
 void game::addSmokeyItems()
 {
+    //--LOCOMOTIVE--//
     Smoke * loco = new Smoke("loco");
     addSmoke(loco); //ajout a la scene et creation du pixmap
+    //--CHEMINEE--//
     Smoke * cheminee = new Smoke("cheminee");
     addSmoke(cheminee);//ajout a la scene et creation du pixmap
+    //--CIGARETTE--//
     Smoke * cigarette = new Smoke("cigarette");
     addSmoke(cigarette);//ajout a la scene et creation du pixmap
+    //--VOLCAN--//
+    Smoke * volcan = new Smoke("volcan");
+    addSmoke(volcan);
+    //--JAMBON--//
+    Smoke * jambon = new Smoke("jambon");
+    addSmoke(jambon);
+    //--VAPOTEUR--//
+    Smoke * vap = new Smoke("vapoteur");
+    addSmoke(vap);
+    //--ENCENS --//
+    Smoke * encens = new Smoke("encens");
+    addSmoke(encens);
     // set location
 
-    loco->setPos(loco->x()+10, loco->y()+20);
-    cheminee->setPos(cheminee->x()+200, cheminee->y()+300);
-    cigarette->setPos(cigarette->x()+400, cigarette->y());
+    loco->setPos(loco->x()+ 670, loco->y()+ 410);
+    cheminee->setPos(cheminee->x()+ 90, cheminee->y()+ 180);
+    cigarette->setPos(cigarette->x()+ 400, cigarette->y()+ 825);
+    volcan ->setPos(volcan->x()+ 40, volcan->y()+ 340);
+    jambon ->setPos(jambon->x()+ 740, jambon->x() + 700);
+    vap-> setPos(vap->x() + 1285, vap->y() + 790);
+    encens -> setPos(encens->x() + 520, encens->y() + 555);
+
+
 
     // ajout des indices
-    indice *indice_cigarette = new indice("Le saviez-vous? \n La fumée de cigarettes est un aérosol, un mélange de gaz et de particules qui contient quatre mille substances,\
- dont plus de quarante sont cancérigènes. Une cigarette contient du tabac, de la nicotine, des agents de saveur et de texture : c’est ce qu’on lit sur les\
- paquets de cigarettes. Ce qu’on ne sait pas toujours, c’est qu’une fois allumée, la cigarette devient une véritable usine chimique. Sa combustion provoque\
- la formation de très nombreuses substances toxiques, dont les goudrons, des gaz toxiques (monoxyde de carbone, oxyde d’azote, acide cyanhydrique, ammoniac) et des métaux lourds (cadmium, mercure, plomb, chrome).");
+    QPixmap * otto = new QPixmap(":/images/images/ottoDix");
+    QPixmap *monet = new QPixmap(":/images/images/Monet");
+    indice *indice_cigarette = new indice("Le saviez-vous? \n Ce qu’on ne sait pas toujours, c’est qu’une fois allumée, la cigarette devient une véritable usine chimique. Sa combustion provoque\
+ la formation de très nombreuses substances toxiques, dont les goudrons, des gaz toxiques (monoxyde de carbone, oxyde d’azote, acide cyanhydrique, ammoniac) et des métaux lourds\
+ (cadmium, mercure, plomb, chrome).\n Petit moment artistique : \n Portrait of Silvia Von Harden - Otto DIX ");
+    indice_cigarette->setIconPixmap(*otto);
 
     indice *indice_loco = new indice("Le saviez-vous? \n Les locomotives à vapeur conservent un certain succès pour les lignes de haute montagne\
  parce que la traction à vapeur est favorisée par la baisse de la pression atmosphérique due à l'altitude abaissant le point\
- d'ébullition de l'eau. Cela permet des économies de combustible et de meilleures performances. ");
+ d'ébullition de l'eau. Cela permet des économies de combustible et de meilleures performances.\n Petit moment artistique : \n \
+La Gare Saint-Lazare - Claude MONET ");
+   indice_loco->setIconPixmap(*monet);
+
 
     indice *indice_cheminee = new indice("Ceci est un smokey");
     cigarette->associerIndice(indice_cigarette);
@@ -121,13 +151,13 @@ void game::addSmokeyItems()
 
 void game::isGameOver()
 {
-        qDebug()<<"is game over?"<< " all i wonder";
+        //qDebug()<<"is game over?"<< " all i wonder";
     for (QList<Smoke*>::iterator it=smokey_items->begin(); it !=smokey_items->end(); ++it)
     {
-        qDebug()<< "testing "<<(*it)->getName();
+       // qDebug()<< "testing "<<(*it)->getName();
         if ((*it)->x() < 1100 || (*it)->y() < 600) // si un des objets fumée du jeu n'est pas dans le sac
         {
-            qDebug()<<" pos de l'objet "<< (*it)->x() << "et " << (*it)->y();
+//            qDebug()<<" pos de l'objet "<< (*it)->x() << "et " << (*it)->y();
             return; //on sort de la fonction
         }
     }

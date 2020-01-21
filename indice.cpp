@@ -3,18 +3,32 @@
 #include <iostream>
 
 // constructeurs
+indice::indice()
+{
+    this-> QMessageBox::setText("not set");
+    this->setMinimumSize(QSize(1000,500));
+}
+
 indice::indice(QString message)
 {
     this-> QMessageBox::setText(message);
     text = message;
+    this->setMinimumSize(QSize(1000,500));
     //relObj->setName("unnamed");
 }
 
+indice::indice(QString message, QPixmap * qp )
+{
+     this-> QMessageBox::setText(message);
+    this->setIconPixmap(*qp);
+    this->setMinimumSize(QSize(1000,500));
+}
 
 indice::indice(const indice &i)
 {
     //this->relObj =i.relObj;
     this->text = i.text;
+    this->setMinimumSize(QSize(1000,500));
 }
 //setter
 
@@ -26,18 +40,6 @@ void indice::setText(QString message)
     this-> exec();
 }
 
-
-// getter
-/*
-Objet indice::getObjet()
-{
-    return *relObj;
-}
-
-void indice::addObjet(Objet* o)
-{
-    relObj = o;
-}*/
 
 void indice::show()
 {

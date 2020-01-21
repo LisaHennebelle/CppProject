@@ -112,6 +112,7 @@ void Smoke::keyPressEvent(QKeyEvent * event)
     if (event->key() == Qt::Key_Return)
     {
         qDebug()<<"entree ";
+        qDebug() << "pos de l'objet "<< this->x() << "et" << this-> y();
         QGraphicsColorizeEffect *eff =new QGraphicsColorizeEffect();
         QColor *red = new QColor();
         red->setRedF(0.5);// setRedF prend en argument une valeur flottante entre 0.0 et 1.0
