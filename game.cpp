@@ -10,6 +10,10 @@
 
 game::game()
 {
+
+    //imposer le timer de jeu à 3 minutes
+    timerJeu->setSingleShot(true);
+    timerJeu->start(180000);
     // taille des listes imposée
     QMessageBox * debut = new QMessageBox();
     debut->setText("Vous allez jouer a notre jeu 'La fumée autour de nous'\n Le but est simple :\
@@ -161,26 +165,36 @@ void game::addSmokeyItems()
 void game::isGameOver()
 {
         //qDebug()<<"is game over?"<< " all i wonder";
-    for (QList<Smoke*>::iterator it=smokey_items->begin(); it !=smokey_items->end(); ++it)
+    if (timerJeu->isActive())
     {
-       // qDebug()<< "testing "<<(*it)->getName();
-        if ((*it)->x() < 1100 || (*it)->y() < 600) // si un des objets fumée du jeu n'est pas dans le sac
+        for (QList<Smoke*>::iterator it=smokey_items->begin(); it !=smokey_items->end(); ++it)
         {
-//            qDebug()<<" pos de l'objet "<< (*it)->x() << "et " << (*it)->y();
-            return; //on sort de la fonction
+           // qDebug()<< "testing "<<(*it)->getName();
+            if ((*it)->x() < 1100 || (*it)->y() < 600) // si un des objets fumée du jeu n'est pas dans le sac
+            {
+    //            qDebug()<<" pos de l'objet "<< (*it)->x() << "et " << (*it)->y();
+                return; //on sort de la fonction
+            }
         }
+
+        //test en selcetionnant juste les objets dans la scene
+
+
+        // une fois qu'on est arrivé là , tous les objets smoke sont dans le sac
+        //c'est la fin du jeu
+        over = 1;
+        qDebug()<<"over is set a 1";
+        mb->show();
+        timer->stop(); //on stoppe le timer
     }
-
-    //test en selcetionnant juste les objets dans la scene
-
-
-    // une fois qu'on est arrivé là , tous les objets smoke sont dans le sac
-    //c'est la fin du jeu
-    over = 1;
-    qDebug()<<"over is set a 1";
-    mb->show();
-    timer->stop(); //on stoppe le timer
-
+    else
+    {
+        QMessageBox * gameOver = new QMessageBox();
+        gameOver->setAccessibleName("Game over");
+        gameOver->setText("GAME OVER \n C'est la fin du temps imparti");
+        gameOver->show();
+        timer->stop();
+    }
 }
 void game::testGame()
 {

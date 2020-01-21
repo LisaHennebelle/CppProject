@@ -16,6 +16,7 @@ class game : public QObject{
     QMessageBox* mb = new QMessageBox;
     QList<Objet*> *items = new QList<Objet*> ();
     QTimer * timer = new QTimer();
+    QTimer *timerJeu = new QTimer();
 
 public:
     QList<Smoke *> *smokey_items = new QList<Smoke*>() ;
