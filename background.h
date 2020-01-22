@@ -10,7 +10,7 @@ class background: public QGraphicsPixmapItem{
    protected:
     int  ok = 0;
 public:
-    background();
+    background(int version);
 //void paintEvent(QPaintEvent *pe);
 signals:
 

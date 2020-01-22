@@ -13,5 +13,6 @@
         <file>images/vapoteur.png</file>
         <file>images/jambon.png</file>
         <file>images/chaussette.png</file>
+        <file>images/Dark.png</file>
     </qresource>
 </RCC>

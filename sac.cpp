@@ -12,7 +12,7 @@ Sac::Sac()
 {
     //etRect(0,0,800,100);//le sac peut contenir 8 objet de taille 100x100
     setPixmap(QPixmap(":/images/images/sac.png"));
-    setPos(x()+1100, y()+500);//il est represente en bas à droite de l'appli
+    setPos(x()+800, y()+500);//il est represente en bas à droite de l'appli
     nb_items = 0;
     items = list<Objet>();
 }
