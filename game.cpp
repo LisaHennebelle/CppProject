@@ -6,6 +6,8 @@
 #include <QRadioButton>
 #include "Objet.h"
 #include "sac.h"
+#define SACX 800
+#define SACY 500
 #include <QList>
 #include <list>
 
@@ -18,7 +20,7 @@ game::game(int version)
     // taille des listes imposée
 
     //smokey_itemsLite->resize(NUM_SMOKE);
-    mb->setText(" Congratulations!!! ");
+
 
     // creation du background bg
 
@@ -66,11 +68,11 @@ if (version ==  0){  //LITE
 
         //ajout d'une chausette
         Objet * chaussette = new Objet("chaussette");
-        chaussette->addPixmapnew();
+        /*chaussette->addPixmapnew();
         itemsLite->push_back(chaussette);
         scenery->addItem(chaussette);
         chaussette->setFlag(QGraphicsItem::ItemIsFocusable);
-        chaussette->setFocus();
+        chaussette->setFocus();*/
         chaussette -> setPos(chaussette->x() + 100 , chaussette ->y() + 500);
         addObject(chaussette);
         }
@@ -81,7 +83,7 @@ if (version ==  0){  //LITE
 game::~game()
 {
     qDebug()<<"game finished";
-    //eliminitaion de tous les elements de la liste itemsLiteLite
+    //elimination de tous les elements de la liste itemsLiteLite
     for (QList<Objet*>::iterator it_o=itemsLite->begin(); it_o !=itemsLite->end(); it_o++)
     {
         itemsLite -> erase(it_o);
@@ -195,6 +197,11 @@ void game::addSmokeyItemsDark()
     Smoke * vap = new Smoke("vapoteur");
     addSmoke(vap);
     vap-> setPos(vap->x() + 680, vap->y() + 720);
+
+    //---AUDREY SMOKING---//
+    Smoke* audrey = new Smoke("audrey");
+    addSmoke(audrey);
+    audrey->setPos(audrey->x() + 520, audrey ->y() +70);
     qDebug()<< "not set yet";
 }
 
@@ -207,7 +214,7 @@ void game::isGameOver()
         for (QList<Smoke*>::iterator it=smokey_itemsLite->begin(); it !=smokey_itemsLite->end(); ++it)
         {
            // qDebug()<< "testing "<<(*it)->getName();
-            if ((*it)->x() < 800 || (*it)->y() < 500) // si un des objets fumée du jeu n'est pas dans le sac
+            if ((*it)->x() < SACX || (*it)->y() < SACY) // si un des objets fumée du jeu n'est pas dans le sac
             {
     //            qDebug()<<" pos de l'objet "<< (*it)->x() << "et " << (*it)->y();
                 return; //on sort de la fonction
@@ -221,6 +228,10 @@ void game::isGameOver()
         //c'est la fin du jeu
         over = 1;
         qDebug()<<"over is set a 1";
+        int runtime = (180000 - timer->remainingTime())/1000;//nombre de millisecondes qui se sont écoulées depuis le debut du timer
+        QString score;
+        score= "Votre score est de :" + QString::number(runtime) + " secondes de jeu";
+        mb->setText(" Félicitations!!! \n" + score );
         mb->show();
         timer->stop(); //on stoppe le timer
     }
