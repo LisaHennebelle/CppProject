@@ -235,6 +235,8 @@ void game::addSmokeyItemsDark()
     audrey->setPos(audrey->x() + 520, audrey ->y() +70);
     qDebug()<< "not set yet";
 
+
+
     //ajout des indices
     QPixmap *hepburn = new QPixmap(":/images/images/hepburn");
     QPixmap *vapoteuse = new QPixmap(":/images/images/vapo");
@@ -242,7 +244,13 @@ void game::addSmokeyItemsDark()
     indice *indice_audrey=new indice("La beauté d’une femme n’est pas dans les vêtements qu’elle porte, la figure qu’elle affiche ou la manière dont elle se coiffe les cheveux. La beauté d’une femme se voit dans ses yeux car ils sont la porte de son coeur, l’endroit où réside son amour.");
     indice_audrey->setIconPixmap(*hepburn);
 
-     audrey->associerIndice(indice_audrey);
+    audrey->associerIndice(indice_audrey);
+
+    indice *indice_vapoteuse=new indice("La vapoteuse diffuse de la vapeur, avec ou sans nicotine, pour vous donner l'impression de tirer sur une véritable cigarette ");
+    indice_vapoteuse->setIconPixmap(*vapoteuse);
+
+    vap->associerIndice(indice_vapoteuse);
+
 
 
 }
