@@ -173,6 +173,8 @@ void game::addSmokeyItemsLite()
     // ajout des indices
     QPixmap * otto = new QPixmap(":/images/images/ottoDix");
     QPixmap *monet = new QPixmap(":/images/images/Monet");
+    QPixmap *douillet = new QPixmap(":/images/images/douillet");
+
     indice *indice_cigarette = new indice(" Petit moment artistique : \n Portrait of Silvia Von Harden - Otto DIX\n Le saviez-vous? \n Ce qu’on ne sait pas toujours, c’est qu’une fois allumée, la cigarette devient une véritable usine chimique. Sa combustion provoque\
  la formation de très nombreuses substances toxiques, dont les goudrons, des gaz toxiques (monoxyde de carbone, oxyde d’azote, acide cyanhydrique, ammoniac) et des métaux lourds\
  (cadmium, mercure, plomb, chrome).\n ");
@@ -184,7 +186,11 @@ void game::addSmokeyItemsLite()
    indice_loco->setIconPixmap(*monet);
 
 
-    indice *indice_cheminee = new indice("Ceci est un smokey");
+    indice *indice_cheminee = new indice("En 1965, la cheminée est franchement tendance et tous les foyers veulent en posséder une, qu’elle soit vraie ou fausse, ancienne ou moderne! \n "
+                                         "Aujourd’hui, la cheminée est toujours symbole de convivialité et un élément de décoration à part entière avec des modèles ultra design ou plus traditionnels");
+
+    indice_cheminee->setIconPixmap(*douillet);
+
     cigarette->associerIndice(indice_cigarette);
     loco->associerIndice(indice_loco);
     cheminee-> associerIndice(indice_cheminee);
