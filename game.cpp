@@ -174,6 +174,8 @@ void game::addSmokeyItemsLite()
     QPixmap * otto = new QPixmap(":/images/images/ottoDix");
     QPixmap *monet = new QPixmap(":/images/images/Monet");
     QPixmap *douillet = new QPixmap(":/images/images/douillet");
+    QPixmap *volcanique = new QPixmap(":/images/images/volcan2");
+
 
     indice *indice_cigarette = new indice(" Petit moment artistique : \n Portrait of Silvia Von Harden - Otto DIX\n Le saviez-vous? \n Ce qu’on ne sait pas toujours, c’est qu’une fois allumée, la cigarette devient une véritable usine chimique. Sa combustion provoque\
  la formation de très nombreuses substances toxiques, dont les goudrons, des gaz toxiques (monoxyde de carbone, oxyde d’azote, acide cyanhydrique, ammoniac) et des métaux lourds\
@@ -191,9 +193,17 @@ void game::addSmokeyItemsLite()
 
     indice_cheminee->setIconPixmap(*douillet);
 
+    indice *indice_volcan= new indice("Dans la mythologie maori, les volcans Taranaki et Ruapehu tombèrent tous les deux amoureux du volcan Tongariro suite à quoi une violente dispute éclata. C'est pourquoi, aujourd'hui encore, aucun Maori ne vit entre les deux volcans colériques, de peur de se retrouver pris au milieu de la dispute.");
+
+
+
+
+    indice_volcan->setIconPixmap(*volcanique);
+
     cigarette->associerIndice(indice_cigarette);
     loco->associerIndice(indice_loco);
     cheminee-> associerIndice(indice_cheminee);
+    volcan->associerIndice(indice_volcan);
 }
 
 
