@@ -17,5 +17,6 @@
         <file>images/audrey.png</file>
         <file>images/douillet.png</file>
         <file>images/volcan2.png</file>
+        <file>images/ham.png</file>
     </qresource>
 </RCC>
