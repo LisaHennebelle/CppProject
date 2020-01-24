@@ -176,6 +176,8 @@ void game::addSmokeyItemsLite()
     QPixmap *douillet = new QPixmap(":/images/images/douillet");
     QPixmap *volcanique = new QPixmap(":/images/images/volcan2");
     QPixmap *ham = new QPixmap(":/images/images/ham");
+    QPixmap *parfum = new QPixmap(":/images/images/parfum");
+
 
 
 
@@ -203,11 +205,18 @@ void game::addSmokeyItemsLite()
     indice *indice_jambon = new indice("suspends un violon,un jambon à ta porte et tu verras rappliquer!");
     indice_jambon->setIconPixmap(*ham);
 
+
+
+    indice *indice_encens=new indice("Sous le charme du parfum mais sans s'en rendre compte,"
+                                     "le gens changeaient de physionomie,d'attitude,de sentiments");
+    indice_encens->setIconPixmap(*parfum);
+
     cigarette->associerIndice(indice_cigarette);
     loco->associerIndice(indice_loco);
     cheminee-> associerIndice(indice_cheminee);
     volcan->associerIndice(indice_volcan);
     jambon->associerIndice(indice_jambon);
+    encens->associerIndice(indice_encens);
 
 
 }
