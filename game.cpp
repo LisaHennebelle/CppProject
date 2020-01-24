@@ -3,65 +3,95 @@
 #include <QDebug>
 #include <QPainter>
 #include <QGraphicsScene>
+#include <QRadioButton>
 #include "Objet.h"
 #include "sac.h"
+#define SACX 800
+#define SACY 500
 #include <QList>
 #include <list>
 
-game::game()
+game::game(int version)
 {
 
     //imposer le timer de jeu à 3 minutes
     timerJeu->setSingleShot(true);
     timerJeu->start(180000);
     // taille des listes imposée
-    QMessageBox * debut = new QMessageBox();
-    debut->setText("Vous allez jouer a notre jeu 'La fumée autour de nous'\n Le but est simple :\
-retrouvez les objets relatifs à la fumée et mettez les dans le sac avec les flèches de votre clavier!\
-\n N'hésitez pas à tester d'autres touches, vous aurez peut-être des surprises ... ");
-    debut->show();
 
-    //smokey_items->resize(NUM_SMOKE);
-    mb->setText("Congrats");
-    over = 0;// over initialisé à 0
+    //smokey_itemsLite->resize(NUM_SMOKE);
+
+
     // creation du background bg
-    background *bg = new background();
+
+    background *bg = new background(version);
     scenery->addItem(bg);
 
-    // ajout de la liste des objet et ajout à la scene
-    addItems();
-    // creation de la variable sac
-    Sac * sac = new Sac();
-    sac->setFlag(QGraphicsItem::ItemIsFocusable);
-    sac->setFocus();
-    scenery ->addItem(sac);
-    //ajout de la liste des smokey items et ajout à la scene
-    addSmokeyItems();
 
-    //ajout d'une chausette
-    Objet * chaussette = new Objet("chaussette");
-    chaussette->addPixmapnew();
-    items->push_back(chaussette);
-    scenery->addItem(chaussette);
-    chaussette->setFlag(QGraphicsItem::ItemIsFocusable);
-    chaussette->setFocus();
-    chaussette -> setPos(chaussette->x() + 100 , chaussette ->y() + 500);
-    addObject(chaussette);
+    // ------ test du type de jeu ------ //
+if (version ==  0){  //LITE
 
-    qDebug("game created with success");
+            // ajout de la liste des objet et ajout à la scene
+            addItems();
+            // creation de la variable sac
+            Sac * sac = new Sac();
+            sac->setFlag(QGraphicsItem::ItemIsFocusable);
+            sac->setFocus();
+            scenery ->addItem(sac);
+            //ajout de la liste des smokey items et ajout à la scene
+            addSmokeyItemsLite();
+
+            //ajout d'une chausette
+            Objet * chaussette = new Objet("chaussette");
+            chaussette->addPixmapnew();
+            itemsLite->push_back(chaussette);
+            scenery->addItem(chaussette);
+            chaussette->setFlag(QGraphicsItem::ItemIsFocusable);
+            chaussette->setFocus();
+            chaussette -> setPos(chaussette->x() + 100 , chaussette ->y() + 500);
+            addObject(chaussette);
+
+            qDebug("game LITE created with success");
 }
+
+    else if (version == 1)//DARK
+        {
+        // ajout de la liste des objet et ajout à la scene
+        addItems();
+        // creation de la variable sac
+        Sac * sac = new Sac();
+        sac->setFlag(QGraphicsItem::ItemIsFocusable);
+        sac->setFocus();
+        scenery ->addItem(sac);
+        //ajout de la liste des smokey items et ajout à la scene
+        addSmokeyItemsDark();
+
+        //ajout d'une chausette
+        Objet * chaussette = new Objet("chaussette");
+        /*chaussette->addPixmapnew();
+        itemsLite->push_back(chaussette);
+        scenery->addItem(chaussette);
+        chaussette->setFlag(QGraphicsItem::ItemIsFocusable);
+        chaussette->setFocus();*/
+        chaussette -> setPos(chaussette->x() + 100 , chaussette ->y() + 500);
+        addObject(chaussette);
+        }
+    else {qDebug() << "il y a eu un probleme"; }
+
+}
+
 game::~game()
 {
     qDebug()<<"game finished";
-    //eliminitaion de tous les elements de la liste items
-    for (QList<Objet*>::iterator it_o=items->begin(); it_o !=items->end(); it_o++)
+    //elimination de tous les elements de la liste itemsLiteLite
+    for (QList<Objet*>::iterator it_o=itemsLite->begin(); it_o !=itemsLite->end(); it_o++)
     {
-        items -> erase(it_o);
+        itemsLite -> erase(it_o);
     }
     // elimination de tous les elements de la liste smokey_items
-    for (QList<Smoke*>::iterator it=smokey_items->begin(); it !=smokey_items->end(); it++)
+    for (QList<Smoke*>::iterator it=smokey_itemsLite->begin(); it !=smokey_itemsLite->end(); it++)
     {
-    smokey_items -> erase(it);
+    smokey_itemsLite -> erase(it);
     }
 }
 
@@ -70,7 +100,7 @@ game::~game()
 void game::addObject(Objet * o)
 {
     o->addPixmapnew();
-    items->push_back(o);
+    itemsLite->push_back(o);
     scenery->addItem(o);
     o->setFlag(QGraphicsItem::ItemIsFocusable);
     o->setFocus();
@@ -80,7 +110,7 @@ void game::addObject(Objet * o)
 void game::addSmoke(Smoke *s)
 {
     s->addPixmapnew();
-    smokey_items->push_back(s);
+    smokey_itemsLite->push_back(s);
     scenery->addItem(s);
     s->setFlag(QGraphicsItem::ItemIsFocusable);
     s->setFocus();
@@ -100,14 +130,14 @@ void game::addItems()
         QString name = "objet_ "+ a ;
         a = a+1;
         Objet *o = new Objet(name);
-        items->push_back(o);
+        itemsLite->push_back(o);
         qDebug() << "ajout de l'objet : "<< o->getName();
 
     }
 
 }
 
-void game::addSmokeyItems()
+void game::addSmokeyItemsLite()
 {
     //--LOCOMOTIVE--//
     Smoke * loco = new Smoke("loco");
@@ -124,21 +154,19 @@ void game::addSmokeyItems()
     //--JAMBON--//
     Smoke * jambon = new Smoke("jambon");
     addSmoke(jambon);
-    //--VAPOTEUR--//
-    Smoke * vap = new Smoke("vapoteur");
-    addSmoke(vap);
+
     //--ENCENS --//
     Smoke * encens = new Smoke("encens");
     addSmoke(encens);
     // set location
 
-    loco->setPos(loco->x()+0, loco->y()+ 750);
-    cheminee->setPos(cheminee->x()+ 90, cheminee->y()+ 180);
-    cigarette->setPos(cigarette->x()+ 400, cigarette->y()+ 825);
-    volcan ->setPos(volcan->x()+ 40, volcan->y()+ 340);
-    jambon ->setPos(jambon->x()+ 740, jambon->x() + 700);
-    vap-> setPos(vap->x() + 1285, vap->y() + 790);
-    encens -> setPos(encens->x() + 520, encens->y() + 555);
+    loco->setPos(loco->x()+0, loco->y()+ 640);
+    cheminee->setPos(cheminee->x()+ 20, cheminee->y()+ 140);
+    cigarette->setPos(cigarette->x()+ 320, cigarette->y()+ 705);
+    volcan ->setPos(volcan->x()+ 10, volcan->y()+ 290);
+    jambon ->setPos(jambon->x()+ 640, jambon->x() + 610);
+
+    encens -> setPos(encens->x() + 420, encens->y() + 465);
 
 
 
@@ -162,15 +190,31 @@ void game::addSmokeyItems()
     cheminee-> associerIndice(indice_cheminee);
 }
 
+
+void game::addSmokeyItemsDark()
+{
+    //--VAPOTEUR--//
+    Smoke * vap = new Smoke("vapoteur");
+    addSmoke(vap);
+    vap-> setPos(vap->x() + 680, vap->y() + 720);
+
+    //---AUDREY SMOKING---//
+    Smoke* audrey = new Smoke("audrey");
+    addSmoke(audrey);
+    audrey->setPos(audrey->x() + 520, audrey ->y() +70);
+    qDebug()<< "not set yet";
+}
+
 void game::isGameOver()
 {
-        //qDebug()<<"is game over?"<< " all i wonder";
+
+     //qDebug()<<"is game over?"<< " all i wonder";
     if (timerJeu->isActive())
     {
-        for (QList<Smoke*>::iterator it=smokey_items->begin(); it !=smokey_items->end(); ++it)
+        for (QList<Smoke*>::iterator it=smokey_itemsLite->begin(); it !=smokey_itemsLite->end(); ++it)
         {
            // qDebug()<< "testing "<<(*it)->getName();
-            if ((*it)->x() < 1100 || (*it)->y() < 600) // si un des objets fumée du jeu n'est pas dans le sac
+            if ((*it)->x() < SACX || (*it)->y() < SACY) // si un des objets fumée du jeu n'est pas dans le sac
             {
     //            qDebug()<<" pos de l'objet "<< (*it)->x() << "et " << (*it)->y();
                 return; //on sort de la fonction
@@ -184,6 +228,10 @@ void game::isGameOver()
         //c'est la fin du jeu
         over = 1;
         qDebug()<<"over is set a 1";
+        int runtime = (180000 - timer->remainingTime())/1000;//nombre de millisecondes qui se sont écoulées depuis le debut du timer
+        QString score;
+        score= "Votre score est de :" + QString::number(runtime) + " secondes de jeu";
+        mb->setText(" Félicitations!!! \n" + score );
         mb->show();
         timer->stop(); //on stoppe le timer
     }

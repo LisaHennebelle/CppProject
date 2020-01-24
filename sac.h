@@ -4,8 +4,8 @@
 #include "Objet.h"
 #include <QGraphicsPixmapItem>
 #include <QString>
-
-
+#define SACX 800
+#define SACY 500
 
 class Sac: public QGraphicsPixmapItem//,public QObject
 {    

@@ -8,6 +8,8 @@
 #include <QMessageBox>
 #include<QGraphicsScene>
 #include<string>
+#define SACX 800
+#define SACY 500
 
 // constructeurs
 Objet::Objet()
@@ -49,19 +51,49 @@ void Objet::keyPressEvent(QKeyEvent *event)
 {
       QMessageBox * qm = new QMessageBox();
     if( event->key() == Qt::Key_Left ){
-        qDebug()<< "Vous venez de selectionner " <<this->getName();
-        setPos(x()-10,y());}
 
-    if( event->key() == Qt::Key_Right){
+
         qDebug()<< "Vous venez de selectionner " <<this->getName();
-        setPos(x()+10,y());}
+        setPos(x()-10,y());
+        if ( this->x() > SACX && this->y() > SACY )
+        {
+            this->setActive(false);
+            qm->setText("Ceci n'est pas un objet en rapport avec la fumée, essayez encore");
+            qm->show();
+        }
+    }
+    if( event->key() == Qt::Key_Right){
+
+        qDebug()<< "Vous venez de selectionner " <<this->getName();
+        setPos(x()+10,y());
+        if ( this->x() > SACX && this->y() > SACY )
+        {
+            this->setActive(false);
+            qm->setText("Ceci n'est pas un objet en rapport avec la fumée, essayez encore");
+            qm->show();
+        }
+
+    }
     if( event->key() == Qt::Key_Up ){
         qDebug()<< "Vous venez de selectionner " <<this->getName();
-        setPos(x(),y()-10);}
+        setPos(x(),y()-10);
+        if ( this->x() > SACX && this->y() > SACY )
+        {
+            this->setActive(false);
+            qm->setText("Ceci n'est pas un objet en rapport avec la fumée, essayez encore");
+            qm->show();
+        }
+    }
     if( event->key() == Qt::Key_Down ){
         qDebug()<< "Vous venez de selectionner " <<this->getName();
-        setPos(x(),y()+10);}
-
+        setPos(x(),y()+10);
+        if ( this->x() > SACX && this->y() > SACY )
+        {
+            this->setActive(false);
+            qm->setText("Ceci n'est pas un objet en rapport avec la fumée, essayez encore");
+            qm->show();
+        }
+    }
 
 
     if(event->key() == Qt::Key_0)
@@ -71,7 +103,7 @@ void Objet::keyPressEvent(QKeyEvent *event)
         }
          if(event->key() == Qt::Key_1 )
         {
-            qm ->setText("Pourquoi des chiffres? ");
+            qm ->setText("Essayez I ");
             qm ->show();
         }
 
@@ -104,8 +136,8 @@ void Objet::keyPressEvent(QKeyEvent *event)
 
          if(event->key() == Qt::Key_I )
         {
-            qm ->setText("Le but est simple :\
-                         retrouvez les objets relatifs à la fumée et mettez les dans le sac avec les flèches de votre clavier!\
+            qm ->setText("Le but est simple :\n\
+                         Retrouvez les objets relatifs à la fumée et mettez les dans le sac avec les flèches de votre clavier!\
                          \n\n N'hésitez pas à tester d'autres touches, vous aurez peut-être des surprises ... ");
             qm ->show();
         }

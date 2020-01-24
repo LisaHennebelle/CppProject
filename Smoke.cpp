@@ -2,6 +2,8 @@
 #include "indice.h"
 #include <QGraphicsColorizeEffect>
 #include<QDebug>
+#define SACX 800
+#define SACY 500
 
 
 Smoke::Smoke()
@@ -71,7 +73,7 @@ void Smoke::keyPressEvent(QKeyEvent * event)
     {
         qDebug()<< "left " <<this->getName();
         setPos(x()-10,y());
-        if( x() > 1100 && y() > 600 )
+        if( x() > SACX && y() > SACY )
         {
             qDebug() << "je suis dans le sac" << "et mon nom est" << this->getName();
             setLock(1);
@@ -82,7 +84,7 @@ void Smoke::keyPressEvent(QKeyEvent * event)
     if( event->key() == Qt::Key_Right){
         //qDebug()<< "Vous venez de selectionner " <<this->getName();
         setPos(x()+10,y());
-        if( x() > 1100 && y() > 600 )
+        if( x() > SACX && y() > SACY )
         {
             qDebug() << "je suis dans le sac"<< "et mon nom est" << this->getName();
             setLock(1);
@@ -91,7 +93,7 @@ void Smoke::keyPressEvent(QKeyEvent * event)
     if( event->key() == Qt::Key_Up ){
         //qDebug()<< "Vous venez de selectionner " <<this->getName();
         setPos(x(),y()-10);
-        if( x() > 1100 && y() > 600 )
+        if( x() > SACX && y() > SACY )
         {
             qDebug() << "je suis dans le sac"<< "et mon nom est" << this->getName();
              setLock(1);
@@ -100,7 +102,7 @@ void Smoke::keyPressEvent(QKeyEvent * event)
     if( event->key() == Qt::Key_Down ){
         //qDebug()<< "Vous venez de selectionner " <<this->getName()<< "et mon nom est" << this->getName();
         setPos(x(),y()+10);
-        if( x() > 1100 && y() > 600 )
+        if( x() > SACX && y() > SACY )
         {
             qDebug() << "je suis dans le sac"<< "et mon nom est" << this->getName();
               setLock(1);

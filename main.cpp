@@ -7,6 +7,7 @@
 #include "game.h"
 #include "background.h"
 #include <QGraphicsView>
+#include<QPushButton>
 #include <unistd.h>
 #include<string>
 
@@ -17,63 +18,54 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
    // QGraphicsScene * scene= new QGraphicsScene();
+    QMessageBox *start = new QMessageBox();
+    int kindGame = 0;
+    start->setText("\
+Vous allez jouer a notre jeu 'La fumée autour de nous'\n\n\
+Le but est simple :\n\
+Retrouvez les objets relatifs à la fumée et mettez les dans le sac avec les flèches de votre clavier!\
+\nN'hésitez pas à tester d'autres touches, vous aurez peut-être des surprises ...                    \
+\nMais attention vous n'aurez que 3 minutes");
+    int retour = start->exec(); // message d'acceuil
 
-    game * gameS = new game();
-  /*  Sac * sac = new Sac();
-    Smoke * loco = new Smoke("loco");
-    loco->addPixmapnew();
-    Smoke * cheminee = new Smoke("cheminee");
+    //---------Selection du type de jeu ----------//
+    if (retour == QMessageBox::Ok)
+    {
+    QMessageBox *debut = new QMessageBox();
+    QPushButton *bLite = new QPushButton("Jouer en version Lite");
+    QPushButton *bDark = new QPushButton("Jouer en version Dark");
+    debut->addButton(bLite,QMessageBox::AcceptRole);
+    debut->addButton(bDark,QMessageBox::AcceptRole);
+    debut->setButtonText(0, "Je choisis un jeu en version Lite");
+    debut->setButtonText(1, "Je choisis un jeu en version Dark");
+    debut->setWindowTitle("Quel type de jeu voulez vous?");
+     // selection du type de jeu
+    debut->exec();
 
-    cheminee->addPixmapnew();
-    Smoke * cigarette = new Smoke("cigarette");
-    cigarette->addPixmapnew();
-    //cigarette->associerObj(loco);
+    // ----- Détermination du type de jeu en fonction du bouton selectionné ----- //
 
-
-    gameS -> addSmoke(*loco);
-    gameS -> addSmoke(*cheminee);
-    gameS -> addSmoke(*cigarette);
-    indice *indice_cigarette = new indice("Ceci est une pipe");
-    indice *deuxieme = new indice("Ceci est une flamme");
-    indice *troisieme = new indice("Ceci est un smokey butt");
-    cigarette->associerIndice(indice_cigarette);
-    loco->associerIndice(deuxieme);
-    cheminee-> associerIndice(troisieme);
-
-    //loco->setloco(0,0,100,100);
-    //cheminee->setloco(0,0,100,100);
-    cheminee->setPos(cheminee->x()+200, cheminee->y()+300);
-   // cigarette->setloco(0,0,50,50);
-    cigarette->setPos(cigarette->x()+400, cigarette->y());
-
-
-    //sac->addObject(*loco);
-
-    // /* scene->addItem(loco);
-    scene->addItem(cheminee);
-    scene->addItem(sac);
-    // scene->addItem(cigarette);/
+    if (debut->clickedButton() == bLite)
+    {
+        bLite->setDisabled(true);
+        bDark->setDisabled(true);
+        kindGame = 0;
+    }
+    if (debut->clickedButton() == bDark)
+    {
+        bLite->setDisabled(true);
+        bDark->setDisabled(true);
+        kindGame = 1;
+    }
+    game * gameChoisie = new game(kindGame);
 
 
-    //make loco focusable
-    loco->setFlag(QGraphicsItem::ItemIsFocusable);
-    loco->setFocus();
-
-    cheminee->setFlag(QGraphicsItem::ItemIsFocusable);
-    cheminee->setFocus();
-
-    sac->setFlag(QGraphicsItem::ItemIsFocusable);
-    sac->setFocus();
-
-    cigarette->setFlag(QGraphicsItem::ItemIsFocusable);
-    cigarette->setFocus();*/
-
-    QGraphicsView * view = new QGraphicsView(gameS->scenery);
+    QGraphicsView * view = new QGraphicsView(gameChoisie->scenery);
     //gameS->scenery->addItem(sac);
     //view->
-      view ->resize(1500, 900);
-    gameS->testGame();
+      view ->resize(1200, 788);
+    gameChoisie->testGame();
     view->show();
 
     return a.exec();
+    }
 }

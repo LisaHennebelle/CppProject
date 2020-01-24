@@ -1,11 +1,16 @@
 #include "background.h"
 #include <QDebug>
 
-background::background()
+background::background(int version )
 {
+    QString type;
     setActive(true);
     this->setPos(this->x(), this->y());
-    QPixmap *qp  = new QPixmap(":/images/images/chambre.png");
+    if (version == 0)
+    {type = ":/images/images/chambre.png";}
+    else if (version == 1)
+    {type = ":/images/images/Dark.png";}
+     QPixmap *qp  = new QPixmap(type);
     this->setPixmap(*qp);
     this->setFlag(QGraphicsItem::ItemIsFocusable);
     this->setFocus();
@@ -13,14 +18,3 @@ background::background()
 }
 
 
-/*void background::paintEvent(QPaintEvent *pe){
-// setting background
-QPixmap pixmap;
-pixmap.load(":/images/images/usine.png");
-QPainter paint(this);
-int widWidth = 400;
-int widHeight = 400;
-pixmap = pixmap.scaled(widWidth, widHeight, Qt::KeepAspectRatioByExpanding);
-paint.drawPixmap(0, 0, pixmap);
-QWidget::paintEvent(pe);
-}*/
