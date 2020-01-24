@@ -19,5 +19,7 @@
         <file>images/volcan2.png</file>
         <file>images/ham.png</file>
         <file>images/parfum.png</file>
+        <file>images/vapo.png</file>
+        <file>images/hepburn.png</file>
     </qresource>
 </RCC>
