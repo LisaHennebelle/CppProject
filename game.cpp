@@ -19,9 +19,15 @@ game::game(int version)
     timerJeu->start(180000);
     // taille des listes imposée
 
-    //smokey_itemsLite->resize(NUM_SMOKE);
+    //creer le message box restart
 
-
+    restart->setText("Voulez-vous rejouer?");
+    oui->isCheckable();
+    non->isCheckable();
+    restart->addButton(oui,QMessageBox::AcceptRole);
+    restart->addButton(non,QMessageBox::NoRole);
+    restart->setButtonText(0, "oui");
+    restart->setButtonText(1, "non");
     // creation du background bg
 
     background *bg = new background(version);
@@ -123,17 +129,11 @@ void game::addItems()
 
 
     // création des objets
-    QString a = "A";
-    int  i = 0;
-    for (i = 0 ; i <NUM_OBJET ; i++) // remplissage de la liste des objets
-    {
-        QString name = "objet_ "+ a ;
-        a = a+1;
-        Objet *o = new Objet(name);
+        Objet *o = new Objet("chaussette");
         itemsLite->push_back(o);
         qDebug() << "ajout de l'objet : "<< o->getName();
 
-    }
+
 
 }
 
@@ -197,12 +197,13 @@ void game::addSmokeyItemsLite()
 
     indice_cheminee->setIconPixmap(*douillet);
 
-    indice *indice_volcan= new indice("Dans la mythologie maori, les volcans Taranaki et Ruapehu tombèrent tous les deux amoureux du volcan Tongariro suite à quoi une violente dispute éclata. C'est pourquoi, aujourd'hui encore, aucun Maori ne vit entre les deux volcans colériques, de peur de se retrouver pris au milieu de la dispute.");
+    indice *indice_volcan= new indice("Dans la mythologie maori, les volcans Taranaki et Ruapehu tombèrent tous les deux amoureux du volcan Tongariro suite à quoi une violente dispute éclata.\n"
+                                      "C'est pourquoi, aujourd'hui encore, aucun Maori ne vit entre les deux volcans colériques, de peur de se retrouver pris au milieu de la dispute.");
     indice_volcan->setIconPixmap(*volcanique);
 
 
 
-    indice *indice_jambon = new indice("suspends un violon,un jambon à ta porte et tu verras rappliquer!");
+    indice *indice_jambon = new indice("Suspends un violon,un jambon à ta porte et tu verras rappliquer!");
     indice_jambon->setIconPixmap(*ham);
 
 
@@ -233,9 +234,21 @@ void game::addSmokeyItemsDark()
     Smoke* audrey = new Smoke("audrey");
     addSmoke(audrey);
     audrey->setPos(audrey->x() + 520, audrey ->y() +70);
-    qDebug()<< "not set yet";
 
+    //---CAFE----//
+    Smoke* cafe = new Smoke("cafe");
+    addSmoke(cafe);
+    cafe->setPos(cafe->x() + 60, cafe->y() +430);
 
+    //--DRAGON---//
+    Smoke * dragon = new Smoke("dragon");
+    addSmoke(dragon);
+    dragon->setPos(dragon->x() +245 , dragon->y() + 310 );
+
+    //--BOITE D'ALUMETTES --//
+    Smoke * boite = new Smoke("boiteAlumettes");
+    addSmoke(boite);
+    boite->setPos(boite->x() +1015 ,boite->y() + 245);
 
     //ajout des indices
     QPixmap *hepburn = new QPixmap(":/images/images/hepburn");
@@ -243,13 +256,25 @@ void game::addSmokeyItemsDark()
 
     indice *indice_audrey=new indice("La beauté d’une femme n’est pas dans les vêtements qu’elle porte, la figure qu’elle affiche ou la manière dont elle se coiffe les cheveux. La beauté d’une femme se voit dans ses yeux car ils sont la porte de son coeur, l’endroit où réside son amour.");
     indice_audrey->setIconPixmap(*hepburn);
-
     audrey->associerIndice(indice_audrey);
 
     indice *indice_vapoteuse=new indice("La vapoteuse diffuse de la vapeur, avec ou sans nicotine, pour vous donner l'impression de tirer sur une véritable cigarette ");
     indice_vapoteuse->setIconPixmap(*vapoteuse);
-
     vap->associerIndice(indice_vapoteuse);
+
+    indice *indice_dragon = new indice("Contrairement à leurs homologues européens, les dragons asiatiques, bien qu'associés aux forces de la nature, sont dangereux mais pas vraiment hostiles. \n"
+                                       " Ils ne montrent pas le caractère souvent violent des dragons occidentaux.");
+    dragon->associerIndice(indice_dragon);
+
+    indice *indice_cafe = new indice("Au cours du XVIIIe siècle, la boisson connaît un grand succès en Europe, et pour répondre à la demande, les colons européens introduisent la culture du café dans de nombreux pays tropicaux. Au XIXe siècle,"
+                                     " l'offre insuffisante a stimulé l'usage de divers substituts au goût proche, comme la racine de chicorée. ");
+    cafe->associerIndice(indice_cafe);
+
+    indice *indice_alumettes = new indice("La collection des boîtes d'allumettes porte le nom de philuménie. Elle est pratiquée de longue date par d'infatigables chercheurs, évoqués par Anatole France, Le Crime de Sylvestre Bonnard, membre de l'Institut.\n"
+
+                                          "La plus ancienne boîte d'allumettes française connue, 'Pyrogènes', très joliment ornée, est conservée à la Bibliothèque nationale. ");
+    boite ->associerIndice(indice_alumettes);
+
 
 
 
@@ -258,8 +283,7 @@ void game::addSmokeyItemsDark()
 void game::isGameOver()
 {
 
-     //qDebug()<<"is game over?"<< " all i wonder";
-    if (timerJeu->isActive())
+   if (timerJeu->isActive())
     {
         for (QList<Smoke*>::iterator it=smokey_itemsLite->begin(); it !=smokey_itemsLite->end(); ++it)
         {
@@ -281,18 +305,52 @@ void game::isGameOver()
         int runtime = (180000 - timer->remainingTime())/1000;//nombre de millisecondes qui se sont écoulées depuis le debut du timer
         QString score;
         score= "Votre score est de :" + QString::number(runtime) + " secondes de jeu";
+        score += "/n Ce qui fait " + QString::number(runtime/60) + ":" +QString::number(runtime%60) + " minutes" ;
         mb->setText(" Félicitations!!! \n" + score );
-        mb->show();
-        timer->stop(); //on stoppe le timer
+        int r = mb->exec();
+        timer->stop();
+        if (r == QMessageBox::Ok)
+        {
+            restart->exec();
+           if ( oui->isChecked())
+           {
+               scenery-> ~QGraphicsScene();
+               rejouer = 1;
+               restart->close();
+           }
+           else if (non->isChecked())
+           {
+               scenery-> ~QGraphicsScene();
+               rejouer = 0;
+               restart->close();
+           }
+         }
+
     }
     else
     {
         QMessageBox * gameOver = new QMessageBox();
         gameOver->setAccessibleName("Game over");
         gameOver->setText("GAME OVER \n C'est la fin du temps imparti");
-        gameOver->show();
+        int r = gameOver->exec();
         timer->stop();
-    }
+        if (r == QMessageBox::Ok)
+        {
+            restart->exec();
+           if ( oui->isChecked())
+           {
+               scenery-> ~QGraphicsScene();
+               rejouer = 1;
+               restart->close();
+           }
+           else if (non->isChecked())
+           {
+               scenery-> ~QGraphicsScene();
+               rejouer = 0;
+               restart->close();
+           }
+         }
+     }
 }
 void game::testGame()
 {
@@ -303,6 +361,8 @@ void game::testGame()
        {
         timer->start(500);
        }
+
+
 }
 
 

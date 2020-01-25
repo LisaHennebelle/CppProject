@@ -32,9 +32,14 @@ class game : public QObject{
     QTimer *timerJeu = new QTimer();
 
 
+    QMessageBox *restart = new QMessageBox();
+    QPushButton *oui = new QPushButton(restart);
+    QPushButton *non = new QPushButton(restart);
+
 public:
 
     int over = 0;// on determine si la partie est terminee grace à over
+    int rejouer = 1;
      QGraphicsScene *scenery = new QGraphicsScene;
      // vue publique
     game();

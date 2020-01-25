@@ -21,5 +21,8 @@
         <file>images/parfum.png</file>
         <file>images/vapo.png</file>
         <file>images/hepburn.png</file>
+        <file>images/cafe.png</file>
+        <file>images/boiteAlumettes.png</file>
+        <file>images/dragon.png</file>
     </qresource>
 </RCC>
