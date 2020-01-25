@@ -43,7 +43,8 @@ public:
     void paintEvent(QPaintEvent *pe);
     void addObject(Objet *o); // pour que les lock soient changés
     void addSmoke(Smoke *s);
-    void addItems();
+    void addItemsLite();
+    void addItemsDark();
     void addSmokeyItemsLite();
     void addSmokeyItemsDark();
     void testGame();

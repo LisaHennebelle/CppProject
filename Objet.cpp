@@ -98,6 +98,7 @@ void Objet::keyPressEvent(QKeyEvent *event)
 
     if(event->key() == Qt::Key_0)
         {
+            qDebug()<<"Position de "<<this->getName() <<": " <<this->x() << " et " <<this->y();
             qm ->setText("Mauvais bouton ...");
             qm ->show();
         }

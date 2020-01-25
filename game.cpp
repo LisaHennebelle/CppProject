@@ -30,7 +30,7 @@ game::game(int version)
 if (version ==  0){  //LITE
 
             // ajout de la liste des objet et ajout à la scene
-            addItems();
+            addItemsLite();
             // creation de la variable sac
             Sac * sac = new Sac();
             sac->setFlag(QGraphicsItem::ItemIsFocusable);
@@ -39,23 +39,12 @@ if (version ==  0){  //LITE
             //ajout de la liste des smokey items et ajout à la scene
             addSmokeyItemsLite();
 
-            //ajout d'une chausette
-            Objet * chaussette = new Objet("chaussette");
-            chaussette->addPixmapnew();
-            itemsLite->push_back(chaussette);
-            scenery->addItem(chaussette);
-            chaussette->setFlag(QGraphicsItem::ItemIsFocusable);
-            chaussette->setFocus();
-            chaussette -> setPos(chaussette->x() + 100 , chaussette ->y() + 500);
-            addObject(chaussette);
-
             qDebug("game LITE created with success");
 }
 
     else if (version == 1)//DARK
         {
-        // ajout de la liste des objet et ajout à la scene
-        addItems();
+
         // creation de la variable sac
         Sac * sac = new Sac();
         sac->setFlag(QGraphicsItem::ItemIsFocusable);
@@ -63,17 +52,11 @@ if (version ==  0){  //LITE
         scenery ->addItem(sac);
         //ajout de la liste des smokey items et ajout à la scene
         addSmokeyItemsDark();
-
-        //ajout d'une chausette
-        Objet * chaussette = new Objet("chaussette");
-        /*chaussette->addPixmapnew();
-        itemsLite->push_back(chaussette);
-        scenery->addItem(chaussette);
-        chaussette->setFlag(QGraphicsItem::ItemIsFocusable);
-        chaussette->setFocus();*/
-        chaussette -> setPos(chaussette->x() + 100 , chaussette ->y() + 500);
-        addObject(chaussette);
+        // ajout de la liste des objet et ajout à la scene
+        addItemsDark();
         }
+
+
     else {qDebug() << "il y a eu un probleme"; }
 
 }
@@ -115,18 +98,50 @@ void game::addSmoke(Smoke *s)
     qDebug()<<"smoke"<<s->getName()<<" ajouté";
 }
 
-void game::addItems()
+void game::addItemsLite()
 {
-    //items->resize(NUM_OBJET);
-
-
     // création des objets
+
+    //---CHAUSSETTE---//
         Objet *o = new Objet("chaussette");
-        itemsLite->push_back(o);
-        qDebug() << "ajout de l'objet : "<< o->getName();
+        addObject(o);
+        o->setPos(o->x()+ 710, o->y() + 550);
 
 
+     //---MOULIN---//
+        Objet *moulin = new Objet("moulin");
+        addObject(moulin);
+        moulin->setPos(moulin->x()+ 1060, moulin->y() + 30);
 
+
+        //---GLOBE---//
+        Objet *globe = new Objet("globe");
+        addObject(globe);
+        globe->setPos(globe->x()+ 560, globe->y() + 570);
+
+
+        //---FLEURS---//
+        Objet *fleurs = new Objet("fleurs");
+        addObject(fleurs);
+        fleurs->setPos(fleurs->x()+ 240, fleurs->y() + 430);
+}
+
+void game::addItemsDark()
+{
+    //---PIANO---//
+        Objet *piano = new Objet("piano");
+        addObject(piano);
+        piano->setPos(piano->x()+ 20, piano->y() + 400);
+        qDebug() << "ajout de l'objet : "<< piano->getName();
+
+        //---DALMATIEN--//
+            Objet *dalmatien = new Objet("dalmatien");
+            addObject(dalmatien);
+            dalmatien->setPos(dalmatien->x()+ 280, dalmatien->y() +570);
+        //---DOMINO--//
+            Objet *domino = new Objet("domino");
+            addObject(domino);
+            domino->setPos(domino->x()+ 770, domino->y() + 590);
 }
 
 void game::addSmokeyItemsLite()
@@ -220,7 +235,7 @@ void game::addSmokeyItemsDark()
     //--VAPOTEUR--//
     Smoke * vap = new Smoke("vapoteur");
     addSmoke(vap);
-    vap-> setPos(vap->x() + 680, vap->y() + 720);
+    vap-> setPos(vap->x() + 1050, vap->y() + 450);
 
     //---AUDREY SMOKING---//
     Smoke* audrey = new Smoke("audrey");

@@ -21,12 +21,11 @@ int main(int argc, char *argv[])
                // QGraphicsScene * scene= new QGraphicsScene();
                 QMessageBox *start = new QMessageBox();
                 int kindGame = 0;
-                start->setText("\
-            Vous allez jouer a notre jeu 'La fumée autour de nous'\n\n\
-            Le but est simple :\n\
-            Retrouvez les objets relatifs à la fumée et mettez les dans le sac avec les flèches de votre clavier!\nPour sélectionner un autre objet, cliquez dessus avec la souris\
-            \nN'hésitez pas à tester d'autres touches, vous aurez peut-être des surprises ...                    \
-            \nMais attention vous n'aurez que 3 minutes");
+            start->setText("Vous allez jouer a notre jeu 'La fumée autour de nous'\n\n\""
+                           "Le but est simple :\n\""
+                           "Retrouvez les objets relatifs à la fumée et mettez les dans le sac avec les flèches de votre clavier!\nPour sélectionner un autre objet, cliquez dessus avec la souris\""
+                            "\nN'hésitez pas à tester d'autres touches, vous aurez peut-être des surprises ..."
+                            "\nMais attention vous n'aurez que 3 minutes");
                 int retour = start->exec(); // message d'acceuil
 
                 //---------Selection du type de jeu ----------//

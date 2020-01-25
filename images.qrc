@@ -24,5 +24,12 @@
         <file>images/cafe.png</file>
         <file>images/boiteAlumettes.png</file>
         <file>images/dragon.png</file>
+        <file>images/Start.png</file>
+        <file>images/piano.png</file>
+        <file>images/dalmatien.png</file>
+        <file>images/domino.png</file>
+        <file>images/moulin.png</file>
+        <file>images/globe.png</file>
+        <file>images/fleurs.png</file>
     </qresource>
 </RCC>
