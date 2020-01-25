@@ -14,10 +14,8 @@
 
 
 int main(int argc, char *argv[])
+
 {
-    int rejouer = 1;
-    while (rejouer)
-    {
                 QApplication a(argc, argv);
 
                // QGraphicsScene * scene= new QGraphicsScene();
@@ -67,8 +65,9 @@ int main(int argc, char *argv[])
                 gameChoisie->testGame();
                 view->show();
 
-                return a.exec();
-                rejouer = gameChoisie->rejouer;
-         }
-    }
+                a.exec();
+
+
+                }
+                return 0;
 }

@@ -19,15 +19,7 @@ game::game(int version)
     timerJeu->start(180000);
     // taille des listes imposée
 
-    //creer le message box restart
 
-    restart->setText("Voulez-vous rejouer?");
-    oui->isCheckable();
-    non->isCheckable();
-    restart->addButton(oui,QMessageBox::AcceptRole);
-    restart->addButton(non,QMessageBox::NoRole);
-    restart->setButtonText(0, "oui");
-    restart->setButtonText(1, "non");
     // creation du background bg
 
     background *bg = new background(version);
@@ -305,26 +297,10 @@ void game::isGameOver()
         int runtime = (180000 - timer->remainingTime())/1000;//nombre de millisecondes qui se sont écoulées depuis le debut du timer
         QString score;
         score= "Votre score est de :" + QString::number(runtime) + " secondes de jeu";
-        score += "/n Ce qui fait " + QString::number(runtime/60) + ":" +QString::number(runtime%60) + " minutes" ;
+        score += "/n Ce qui fait " + QString::number(runtime/60) + ":" +QString::number(runtime%60) + "minutes" ;
         mb->setText(" Félicitations!!! \n" + score );
-        int r = mb->exec();
+        mb->exec();
         timer->stop();
-        if (r == QMessageBox::Ok)
-        {
-            restart->exec();
-           if ( oui->isChecked())
-           {
-               scenery-> ~QGraphicsScene();
-               rejouer = 1;
-               restart->close();
-           }
-           else if (non->isChecked())
-           {
-               scenery-> ~QGraphicsScene();
-               rejouer = 0;
-               restart->close();
-           }
-         }
 
     }
     else
@@ -332,25 +308,10 @@ void game::isGameOver()
         QMessageBox * gameOver = new QMessageBox();
         gameOver->setAccessibleName("Game over");
         gameOver->setText("GAME OVER \n C'est la fin du temps imparti");
-        int r = gameOver->exec();
+        gameOver->exec();
         timer->stop();
-        if (r == QMessageBox::Ok)
-        {
-            restart->exec();
-           if ( oui->isChecked())
-           {
-               scenery-> ~QGraphicsScene();
-               rejouer = 1;
-               restart->close();
-           }
-           else if (non->isChecked())
-           {
-               scenery-> ~QGraphicsScene();
-               rejouer = 0;
-               restart->close();
-           }
-         }
-     }
+
+    }
 }
 void game::testGame()
 {
